@@ -116,4 +116,8 @@ class InviteTeamView(View):
             messages.error(request, 'Invite not sent...') 
             return redirect("invite_team")
         
-
+class InviteTeamView(View):
+    pass
+class DashboardView(View):
+    def get(self,request):
+        return render(request, 'dashboard.html')

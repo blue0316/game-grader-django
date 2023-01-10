@@ -1,0 +1,371 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game-Grader | Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body class="bg-gray-700">
+
+    <div x-data="{ sidebarOpen: true }" class="flex overflow-x-hidden h-screen">
+        <aside class="flex-shrink-0 w-64 flex flex-col transition-all duration-300" :class="{ '-ml-64': !sidebarOpen }">
+
+            <nav class="flex-1 flex flex-col bg-slate-800 grid grid-cols-1 gap-4 content-between">
+                <div>
+                    <a href="#" class="p-2 flex items-center">
+                        <div class="text-white text-8xl">G</div>
+                        <div class="text-white ml-4">Welcome, Daniel</div>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa-solid fa-house text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Dashboard
+                        </p>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa-solid fa-calendar-days text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Schedule
+                        </p>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-list text-2xl text-white"></i>
+                            </span>
+                        </div>
+                        <p class="ml-4 text-white">
+                            <span>
+                                Manage Team
+                            </span>
+                            <span class="ml-8">
+                                5
+                            </span>
+                        </p>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa fa-pen-to-square text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Position Editor
+                        </p>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa-solid fa-gear text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Settings
+                        </p>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa-solid fa-circle-question text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Help
+                        </p>
+                    </a>
+
+                </div>
+                <div>
+
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa-solid fa-circle-user text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Profile
+                        </p>
+                    </a>
+                    <a href="#" class="p-2 flex">
+                        <span>
+                            <i class="fa-solid fa-arrow-right-from-bracket text-2xl text-white"></i>
+                        </span>
+                        <p class="ml-4 text-white">
+                            Logout
+                        </p>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        <div class="flex-1">
+            <div class="m-4 flex justify-between">
+                <div class="flex items-center">
+                    <button class="p-1 mr-4 text-white" @click="sidebarOpen = !sidebarOpen">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="h-6 w-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                <div>
+                    <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full">
+                        Add a Game
+                    </button>
+                    <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 ml-4 rounded-full">
+                        Add a Practice
+                    </button>
+                </div>
+            </div>
+            <main class="p-4">
+                <div class="flex column gap-4">
+                    <div class="w-2/6">
+                        <p class="text-center text-white my-2 bg-gray-600">2023-24</p>
+                        <ul class="mt-4">
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">3</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">vs MT. SAC</p>
+                                            <p class="text-white">3:20pm - 5:00pm</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">10</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">vs Pasadena City Collage</p>
+                                            <p class="text-white">1:10pm - 2:05pm</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">17</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">at Citrus Collage</p>
+                                            <p class="text-white">4:55pm - 6:00pm</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-2/6">
+                        <p class="text-center text-white my-2 bg-gray-600">vs MT. SAC - September 3, 2023</p>
+                        <ul class="mt-4">
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">1</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">Title of Practice 1</p>
+                                            <p class="text-white">Practice</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">2</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">Friday defence Practice</p>
+                                            <p class="text-white">Practice</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">3</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">Game vs MT. SAC</p>
+                                            <p class="text-white">Game</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-2/6">
+                        <p class="text-center text-white my-2 bg-gray-600">Grades Overview: vs MT. SAC - September 3, 2023</p>
+                        <ul class="mt-4">
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">3</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">vs MT. SAC</p>
+                                            <p class="text-white">3:20pm - 5:00pm</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">10</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">vs Pasadena City Collage</p>
+                                            <p class="text-white">1:10pm - 2:05pm</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                                <button class="flex grid grid-cols-10 w-full items-center">
+                                    <div>
+                                        <p class="text-white">17</p>
+                                        <p class="text-white">Sept</p>
+                                    </div>
+                                    <div class="flex justify-center items-center col-span-8">
+                                        <div>
+                                            <p class="text-white">at Citrus Collage</p>
+                                            <p class="text-white">4:55pm - 6:00pm</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-greater-than text-white text-center"></i>
+                                    </div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="container mx-auto flex justify-center mt-8">
+                    <div>
+                        <div>
+                            <h2 class="text-center font-medium leading-tight text-4xl mt-0 mb-2 text-gray-700">Welcom,
+                                Danial</h2>
+                            <p class="text-center text-gray-700">September 10th, 2017</p>
+                        </div>
+                        <div class="flex justify-center relative m-3">
+                            <div
+                                class="h-40 w-40 bg-gray-300 rounded-full text-center flex justify-center items-center mt-3">
+                                <div>
+                                    <div class="text-gray-500 text-6xl">33</div>
+                                    <div class="text-gray-500">Games</div>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-20 right-8 h-16 w-16 bg-gray-200 rounded-full text-center flex justify-center items-center">
+                                <div>
+                                    <p class="text-2xl">10</p>
+                                    <p>staff</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
+                            <li class="flex flex-wrap">
+                                <div>
+                                    <p class="text-4xl">2</p>
+                                    <p>Sept</p>
+                                </div>
+                                <div class="flex items-center text-2xl ml-2">
+                                    vs MT. SAC
+                                </div>
+                            </li>
+                            <hr
+                                class="h-px mb-4 bg-gray-200 border-0 bg-gradient-to-r from-slate-300 via-slate-600 to-slate-300">
+                            <li class="flex flex-wrap">
+                                <div>
+                                    <p class="text-4xl">9</p>
+                                    <p>Sept</p>
+                                </div>
+                                <div class="flex items-center text-2xl ml-2">
+                                    vs Pasadena City Collage
+                                </div>
+                            </li>
+                            <hr
+                                class="h-px mb-4 bg-gray-200 border-0 bg-gradient-to-r from-slate-300 via-slate-600 to-slate-300">
+                            <li class="flex flex-wrap">
+                                <div>
+                                    <p class="text-4xl">16</p>
+                                    <p>Sept</p>
+                                </div>
+                                <div class="flex items-center text-2xl ml-2">
+                                    at Citrus College
+                                </div>
+                            </li>
+                            <hr class="h-px mb-4 bg-gradient-to-r from-slate-300 via-slate-600 to-slate-300 border-0">
+                        </ul>
+                        <div class="flex justify-center items-center my-8">
+                            <button class="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-full w-64">
+                                ADD A PRACTICE
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+            </main>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
