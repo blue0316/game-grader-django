@@ -88,3 +88,6 @@ class LoginView(View):
         
 class InviteTeamView(View):
     pass
+class DashboardView(View):
+    def get(self,request):
+        return render(request, 'dashboard.html')
