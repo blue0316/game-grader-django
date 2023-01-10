@@ -14,7 +14,7 @@
 <body>
     <div class="flex justify-center">
         <div class="w-full max-w-xs">
-            <form class="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-gray-400">
+            <form class="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-gray-400" method='POST'>{% csrf_token %}
                 <div class="font-bold text-2xl mb-6 flex justify-center">Signin</div>
                 <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NAME</label>
                 <div class="relative mb-6">
@@ -26,7 +26,7 @@
                         </svg>
 
                     </div>
-                    <input type="text" id="input-group-1"
+                    <input type="text" id="input-group-1" name='user_name'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter name">
                 </div>
@@ -41,13 +41,13 @@
                                 d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                         </svg>
                     </div>
-                    <input type="password" id="password"
+                    <input type="password" id="password" name='pass_word'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter password">
                 </div>
                 <hr class="h-px mb-4 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="flex items-center justify-center">
-                    <button class="rounded-full border-2 border-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button class="rounded-full border-2 border-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                       Sign Up
                     </button>
                     <!-- <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
@@ -58,6 +58,14 @@
             <p class="text-center text-gray-500 text-xs font-normal">
                 DON"T HAVE AN ACCOUNT? <a href="#" class="font-semibold">SIGN UP</a>
             </p>
+            <br>
+            {% if errors %}
+                <ul>
+                    {% comment %} {% for error in errors %} {% endcomment %}
+                    <li>{{ error }}</li>
+                    {% comment %} {% endfor %} {% endcomment %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 </body>
