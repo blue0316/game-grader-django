@@ -1,5 +1,5 @@
 from django.urls import path, include
-from core.views import SignupView, LoginView, InviteTeamView, DashboardView, ManageTeamView
+from core.views import SignupView, LoginView, InviteTeamView, DashboardView, ProfileView, ManageTeamView
 
 urlpatterns = [
     path('', LoginView.as_view(),),
@@ -10,4 +10,5 @@ urlpatterns = [
 
 
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('profile/', ProfileView.as_view(), name='profile'),
 ]
