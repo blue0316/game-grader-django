@@ -193,3 +193,10 @@ class InviteTeamView(View):
         else:
             messages.error(request, "Please Enter First-name...")
         return redirect('invite_team')
+        
+class DashboardView(View):
+    def get(self,request):
+        return render(request, 'dashboard.html')
+class ProfileView(View):
+    def get(self,request):
+        return render(request, 'profile.html')

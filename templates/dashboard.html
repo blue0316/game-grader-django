@@ -1,638 +1,314 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game-Grader | Dashboard</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
-
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/datepicker.min.js"></script>
-
-
-</head>
-
-<body class="bg-gray-700">
-
-    <div x-data="{ sidebarOpen: true }" class="flex overflow-x-hidden h-screen">
-        <aside class="flex-shrink-0 w-64 flex flex-col transition-all duration-300 sticky top-0	"
-            :class="{ '-ml-64': !sidebarOpen }">
-
-            <nav class="flex-1 flex flex-col bg-slate-800 grid grid-cols-1 gap-4 content-between">
-                <div>
-                    <a href="#" class="p-2 flex items-center">
-                        <div class="text-white text-8xl">G</div>
-                        <div class="text-white ml-4">Welcome, Daniel</div>
-                    </a>
-                    <a href="#" class="p-2 flex text-white hover:text-cyan-400">
-                        <span>
-                            <i class="fa-solid fa-house text-2xl"></i>
-                        </span>
-                        <p class="ml-4 ">
-                            Dashboard
-                        </p>
-                    </a>
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <span>
-                            <i class="fa-solid fa-calendar-days text-2xl"></i>
-                        </span>
-                        <p class="ml-4">
-                            Schedule
-                        </p>
-                    </a>
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <div>
-                            <span>
-                                <i class="fa-solid fa-list text-2xl"></i>
-                            </span>
-                        </div>
-                        <p class="ml-4">
-                            <span>
-                                Manage Team
-                            </span>
-                            <span class="ml-8">
-                                5
-                            </span>
-                        </p>
-                    </a>
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <span>
-                            <i class="fa fa-pen-to-square text-2xl"></i>
-                        </span>
-                        <p class="ml-4">
-                            Position Editor
-                        </p>
-                    </a>
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <span>
-                            <i class="fa-solid fa-gear text-2xl"></i>
-                        </span>
-                        <p class="ml-4">
-                            Settings
-                        </p>
-                    </a>
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <span>
-                            <i class="fa-solid fa-circle-question text-2xl"></i>
-                        </span>
-                        <p class="ml-4">
-                            Help
-                        </p>
-                    </a>
-
-                </div>
-                <div>
-
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <span>
-                            <i class="fa-solid fa-circle-user text-2xl"></i>
-                        </span>
-                        <p class="ml-4">
-                            Profile
-                        </p>
-                    </a>
-                    <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
-                        <span>
-                            <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
-                        </span>
-                        <p class="ml-4">
-                            Logout
-                        </p>
-                    </a>
-                </div>
-            </nav>
-        </aside>
-        <div class="flex-1">
-            <div class="m-4 flex justify-between">
-                <div class="flex items-center">
-                    <button class="p-1 mr-4 text-white" @click="sidebarOpen = !sidebarOpen">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            class="h-6 w-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-                <div>
-                    <!-- <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full">
-                        Add a Game
-                        <button class="bg-cyan-400 text-white active:bg-cyan-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
-                    </button> -->
-                    <!-- Button trigger modal for add game-->
-                    <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full"
-                        onclick="toggleModal('modal-id')">
-                        Add a Game
-                    </button>
-
-                    <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 ml-4 rounded-full">
-                        Add a Practice
-                    </button>
-                </div>
-            </div>
-            <main class="p-4">
-                <div class="flex column gap-4">
-                    <div class="w-2/6">
-                        <p class="text-center text-white my-2 bg-gray-600">2023-24</p>
-                        <ul class="mt-4">
-                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
-                                <button class="flex grid grid-cols-10 w-full items-center">
-                                    <div>
-                                        <p class="text-white">3</p>
-                                        <p class="text-white">Sept</p>
-                                    </div>
-                                    <div class="flex justify-center items-center col-span-8">
-                                        <div>
-                                            <p class="text-white">vs MT. SAC</p>
-                                            <p class="text-white">3:20pm - 5:00pm</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-greater-than text-white text-center"></i>
-                                    </div>
-                                </button>
-                            </li>
-                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
-                                <button class="flex grid grid-cols-10 w-full items-center">
-                                    <div>
-                                        <p class="text-white">10</p>
-                                        <p class="text-white">Sept</p>
-                                    </div>
-                                    <div class="flex justify-center items-center col-span-8">
-                                        <div>
-                                            <p class="text-white">vs Pasadena City Collage</p>
-                                            <p class="text-white">1:10pm - 2:05pm</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-greater-than text-white text-center"></i>
-                                    </div>
-                                </button>
-                            </li>
-                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
-                                <button class="flex grid grid-cols-10 w-full items-center">
-                                    <div>
-                                        <p class="text-white">17</p>
-                                        <p class="text-white">Sept</p>
-                                    </div>
-                                    <div class="flex justify-center items-center col-span-8">
-                                        <div>
-                                            <p class="text-white">at Citrus Collage</p>
-                                            <p class="text-white">4:55pm - 6:00pm</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-greater-than text-white text-center"></i>
-                                    </div>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="w-2/6">
-                        <p class="text-center text-white my-2 bg-gray-600">vs MT. SAC - September 3, 2023</p>
-                        <ul class="mt-4">
-                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
-                                <button class="flex grid grid-cols-10 w-full items-center">
-                                    <div>
-                                        <p class="text-white">1</p>
-                                        <p class="text-white">Sept</p>
-                                    </div>
-                                    <div class="flex justify-center items-center col-span-8">
-                                        <div>
-                                            <p class="text-white">Title of Practice 1</p>
-                                            <p class="text-white">Practice</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-greater-than text-white text-center"></i>
-                                    </div>
-                                </button>
-                            </li>
-                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
-                                <button class="flex grid grid-cols-10 w-full items-center">
-                                    <div>
-                                        <p class="text-white">2</p>
-                                        <p class="text-white">Sept</p>
-                                    </div>
-                                    <div class="flex justify-center items-center col-span-8">
-                                        <div>
-                                            <p class="text-white">Friday defence Practice</p>
-                                            <p class="text-white">Practice</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-greater-than text-white text-center"></i>
-                                    </div>
-                                </button>
-                            </li>
-                            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
-                                <button class="flex grid grid-cols-10 w-full items-center">
-                                    <div>
-                                        <p class="text-white">3</p>
-                                        <p class="text-white">Sept</p>
-                                    </div>
-                                    <div class="flex justify-center items-center col-span-8">
-                                        <div>
-                                            <p class="text-white">Game vs MT. SAC</p>
-                                            <p class="text-white">Game</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-greater-than text-white text-center"></i>
-                                    </div>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="w-2/6">
-                        <p class="text-center text-white my-2 bg-gray-600">Grades Overview: vs MT. SAC - September 3,
-                            2023</p>
-                        <div class="flex items-center grid grid-cols-10 w-full bg-gray-600 mt-4 p-2 rounded">
-                            <span class="flex justify-center items-center text-white col-span-8 text-4xl">Gared or
-                                Edit</span>
-                            <span class="flex justify-center items-center col-span-2">
-                                <i class="fa fa-greater-than text-white"></i>
-                            </span>
-                        </div>
-                        <div class="flex grid grid-cols-3 gap-2 my-2">
-                            <button
-                                class="bg-gray-500 text-white flex justify-center h-10 items-center hover:bg-gray-500 focus:bg-gray-500">OFFENSE</button>
-                            <button
-                                class="bg-gray-600 text-white flex justify-center h-10 items-center hover:bg-gray-500 focus:bg-gray-500">DEFENCE</button>
-                            <button
-                                class="bg-gray-600 text-white flex justify-center h-10 items-center hover:bg-gray-500 focus:bg-gray-500">SPECIAL
-                                TEAMS</button>
-                        </div>
-                        <ul class="mt-2">
-                            <li class="flex grid grid-cols-3 gap-2">
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">72</p>
-                                        <p class="flex items-center justify-center w-full">PLAYER</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Assignment</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">92</p>
-                                        <p class="flex items-center justify-center w-full">REPS</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card technique">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Technique</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">B+</p>
-                                        <p class="flex items-center justify-center w-full">GRADE</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card grade">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Effort</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <hr class="h-px mb-4 border-0 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600">
-                            <li class="flex grid grid-cols-3 gap-2">
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">72</p>
-                                        <p class="flex items-center justify-center w-full">PLAYER</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Assignment</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">92</p>
-                                        <p class="flex items-center justify-center w-full">REPS</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card technique">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Technique</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">B+</p>
-                                        <p class="flex items-center justify-center w-full">GRADE</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card grade">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Effort</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <hr class="h-px mb-4 border-0 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600">
-                            <li class="flex grid grid-cols-3 gap-2">
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">72</p>
-                                        <p class="flex items-center justify-center w-full">PLAYER</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Assignment</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">92</p>
-                                        <p class="flex items-center justify-center w-full">REPS</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card technique">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Technique</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-white">
-                                        <p class="flex items-center justify-center w-full text-4xl">B+</p>
-                                        <p class="flex items-center justify-center w-full">GRADE</p>
-                                    </div>
-                                    <div class="wrapper flex items-center justify-center w-full">
-                                        <div class="card grade">
-                                            <div class="circle">
-                                                <div class="bar"></div>
-                                                <div class="box">
-                                                    <span class="assign-percent text-white">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="flex items-center justify-center w-full text-white">Effort</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <hr class="h-px mb-4 border-0 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600">
-                        </ul>
-                    </div>
-                </div>
-                <!-- <div class="container mx-auto flex justify-center mt-8">
+{% load static %}
+{% block content %}
+<div class="flex column gap-4">
+    <div class="w-2/6">
+        <p class="text-center text-white my-2 bg-gray-600">2023-24</p>
+        <ul class="mt-4">
+            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                <button class="flex grid grid-cols-10 w-full items-center">
                     <div>
+                        <p class="text-white">3</p>
+                        <p class="text-white">Sept</p>
+                    </div>
+                    <div class="flex justify-center items-center col-span-8">
                         <div>
-                            <h2 class="text-center font-medium leading-tight text-4xl mt-0 mb-2 text-gray-700">Welcom,
-                                Danial</h2>
-                            <p class="text-center text-gray-700">September 10th, 2017</p>
-                        </div>
-                        <div class="flex justify-center relative m-3">
-                            <div
-                                class="h-40 w-40 bg-gray-300 rounded-full text-center flex justify-center items-center mt-3">
-                                <div>
-                                    <div class="text-gray-500 text-6xl">33</div>
-                                    <div class="text-gray-500">Games</div>
-                                </div>
-                            </div>
-                            <div
-                                class="absolute bottom-20 right-8 h-16 w-16 bg-gray-200 rounded-full text-center flex justify-center items-center">
-                                <div>
-                                    <p class="text-2xl">10</p>
-                                    <p>staff</p>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="max-w-md space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
-                            <li class="flex flex-wrap">
-                                <div>
-                                    <p class="text-4xl">2</p>
-                                    <p>Sept</p>
-                                </div>
-                                <div class="flex items-center text-2xl ml-2">
-                                    vs MT. SAC
-                                </div>
-                            </li>
-                            <hr
-                                class="h-px mb-4 bg-gray-200 border-0 bg-gradient-to-r from-slate-300 via-slate-600 to-slate-300">
-                            <li class="flex flex-wrap">
-                                <div>
-                                    <p class="text-4xl">9</p>
-                                    <p>Sept</p>
-                                </div>
-                                <div class="flex items-center text-2xl ml-2">
-                                    vs Pasadena City Collage
-                                </div>
-                            </li>
-                            <hr
-                                class="h-px mb-4 bg-gray-200 border-0 bg-gradient-to-r from-slate-300 via-slate-600 to-slate-300">
-                            <li class="flex flex-wrap">
-                                <div>
-                                    <p class="text-4xl">16</p>
-                                    <p>Sept</p>
-                                </div>
-                                <div class="flex items-center text-2xl ml-2">
-                                    at Citrus College
-                                </div>
-                            </li>
-                            <hr class="h-px mb-4 bg-gradient-to-r from-slate-300 via-slate-600 to-slate-300 border-0">
-                        </ul>
-                        <div class="flex justify-center items-center my-8">
-                            <button class="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-full w-64">
-                                ADD A PRACTICE
-                            </button>
+                            <p class="text-white">vs MT. SAC</p>
+                            <p class="text-white">3:20pm - 5:00pm</p>
                         </div>
                     </div>
-                </div> -->
-            </main>
+                    <div>
+                        <i class="fa fa-greater-than text-white text-center"></i>
+                    </div>
+                </button>
+            </li>
+            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                <button class="flex grid grid-cols-10 w-full items-center">
+                    <div>
+                        <p class="text-white">10</p>
+                        <p class="text-white">Sept</p>
+                    </div>
+                    <div class="flex justify-center items-center col-span-8">
+                        <div>
+                            <p class="text-white">vs Pasadena City Collage</p>
+                            <p class="text-white">1:10pm - 2:05pm</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-greater-than text-white text-center"></i>
+                    </div>
+                </button>
+            </li>
+            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                <button class="flex grid grid-cols-10 w-full items-center">
+                    <div>
+                        <p class="text-white">17</p>
+                        <p class="text-white">Sept</p>
+                    </div>
+                    <div class="flex justify-center items-center col-span-8">
+                        <div>
+                            <p class="text-white">at Citrus Collage</p>
+                            <p class="text-white">4:55pm - 6:00pm</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-greater-than text-white text-center"></i>
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="w-2/6">
+        <p class="text-center text-white my-2 bg-gray-600">vs MT. SAC - September 3, 2023</p>
+        <ul class="mt-4">
+            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                <button class="flex grid grid-cols-10 w-full items-center">
+                    <div>
+                        <p class="text-white">1</p>
+                        <p class="text-white">Sept</p>
+                    </div>
+                    <div class="flex justify-center items-center col-span-8">
+                        <div>
+                            <p class="text-white">Title of Practice 1</p>
+                            <p class="text-white">Practice</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-greater-than text-white text-center"></i>
+                    </div>
+                </button>
+            </li>
+            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                <button class="flex grid grid-cols-10 w-full items-center">
+                    <div>
+                        <p class="text-white">2</p>
+                        <p class="text-white">Sept</p>
+                    </div>
+                    <div class="flex justify-center items-center col-span-8">
+                        <div>
+                            <p class="text-white">Friday defence Practice</p>
+                            <p class="text-white">Practice</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-greater-than text-white text-center"></i>
+                    </div>
+                </button>
+            </li>
+            <li class="border-solid border rounded my-2 p-2 hover:bg-gray-600">
+                <button class="flex grid grid-cols-10 w-full items-center">
+                    <div>
+                        <p class="text-white">3</p>
+                        <p class="text-white">Sept</p>
+                    </div>
+                    <div class="flex justify-center items-center col-span-8">
+                        <div>
+                            <p class="text-white">Game vs MT. SAC</p>
+                            <p class="text-white">Game</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa fa-greater-than text-white text-center"></i>
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="w-2/6">
+        <p class="text-center text-white my-2 bg-gray-600">Grades Overview: vs MT. SAC - September 3,
+            2023</p>
+        <div class="flex items-center grid grid-cols-10 w-full bg-gray-600 mt-4 p-2 rounded">
+            <span class="flex justify-center items-center text-white col-span-8 text-4xl">Gared or
+                Edit</span>
+            <span class="flex justify-center items-center col-span-2">
+                <i class="fa fa-greater-than text-white"></i>
+            </span>
         </div>
-    </div>
-
-    <!-- Modal for add game-->
-
-
-    <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
-        id="modal-id">
-        <div class="relative w-3/6 my-6">
-            <!--content-->
-            <div class="border-0 rounded shadow-lg relative flex flex-col w-full outline-none focus:outline-none">
-                <!--header-->
-                <div class="flex items-center justify-between text-white p-5 bg-gray-600">
-                    
-                    <button
-                        class="p-1 bg-transparent border-0 float-right text-3xl leading-none font-semibold outline-none focus:outline-none hover:text-red-500"
-                        type="button" onclick="toggleModal('modal-id')">
-                        <i class="fa fa-circle-xmark"></i>
-                    </button>
-                    <h3 class="text-3xl flex justify-center items-center">
-                        NEW GAME
-                    </h3>
-                    <button
-                        class="p-1 bg-transparent border-0 float-right text-3xl leading-none font-semibold outline-none focus:outline-none hover:text-green-500"
-                        type="button" onclick="toggleModal('modal-id')">
-                        <i class="fa fa-circle-check"></i>
-                    </button>
-                </div>
-                <!--body-->
-                <div class="relative p-6 flex-auto bg-gray-700 justify-center">
-                    <form action="" method="post">
-                        <div class="grid justify-center">
-                            <label for="game_title"
-                                class="block mb-2 text-sm font-medium text-white flex justify-center">Game Title</label>
-                            <input type="text" id="game_title" class="bg-gray-600 rounded p-2 text-white"
-                                placeholder="John" required>
-                        </div>
-                        <div class="grid justify-cente mt-2">
-                            <div>
-                                <label for="game_title"
-                                    class="block mb-2 text-sm font-medium text-white flex justify-center">Event
-                                    Type</label>
-                            </div>
-                            <ul class="grid grid-cols-2 gap-x-5 max-w-md mx-auto">
-                                <li class="relative">
-                                    <input class="sr-only peer" type="radio" value="game" name="event_type" id="game">
-                                    <label
-                                        class="flex p-2 bg-gray-600 focus:bg-gray-500 hover:bg-gray-400 peer-checked:bg-gray-400 rounded justify-center text-white"
-                                        for="game">GAME</label>
-                                <li class="relative">
-                                    <input class="sr-only peer" type="radio" value="practice" name="event_type"
-                                        id="practice">
-                                    <label
-                                        class="flex p-2 bg-gray-600 focus:bg-gray-500 hover:bg-gray-400 peer-checked:bg-gray-400 rounded justify-center text-white"
-                                        for="practice">PRACTICE</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="flex justify-between grid grid-cols-2 gap-4 mt-2">
-                            <div class="flex justify-center">
-                                <div>
-                                    <div class="text-white flex justify-center">
-                                        Select Event Date
-                                    </div>
-                                    <div class="relative mt-2">
-                                        <div
-                                            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                                                fill="currentColor" viewBox="0 0 20 20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                        <input datepicker type="text"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Select date">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="text-white flex justify-center">
-                                    Share with
-                                </div>
-                                <div class="mt-2 bg-gray-500 rounded p-2">
-                                    <div class="flex items-center">
-                                        <input id="default-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="default-checkbox"
-                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">only
-                                            me</label>
-                                    </div>
-                                    <div class="flex items-center mt-2">
-                                        <input checked id="checked-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="checked-checkbox"
-                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">staff</label>
-                                    </div>
-                                    <div class="flex items-center mt-2">
-                                        <input checked id="checked-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label for="checked-checkbox"
-                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">staff</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!--footer-->
-                <!-- <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                    
-                </div> -->
-            </div>
+        <div class="flex grid grid-cols-3 gap-2 my-2">
+            <button
+                class="bg-gray-500 text-white flex justify-center h-10 items-center hover:bg-gray-500 focus:bg-gray-500">OFFENSE</button>
+            <button
+                class="bg-gray-600 text-white flex justify-center h-10 items-center hover:bg-gray-500 focus:bg-gray-500">DEFENCE</button>
+            <button
+                class="bg-gray-600 text-white flex justify-center h-10 items-center hover:bg-gray-500 focus:bg-gray-500">SPECIAL
+                TEAMS</button>
         </div>
+        <ul class="mt-2">
+            <li class="flex grid grid-cols-3 gap-2">
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">72</p>
+                        <p class="flex items-center justify-center w-full">PLAYER</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Assignment</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">92</p>
+                        <p class="flex items-center justify-center w-full">REPS</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card technique">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Technique</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">B+</p>
+                        <p class="flex items-center justify-center w-full">GRADE</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card grade">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Effort</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <hr class="h-px mb-4 border-0 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600">
+            <li class="flex grid grid-cols-3 gap-2">
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">72</p>
+                        <p class="flex items-center justify-center w-full">PLAYER</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Assignment</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">92</p>
+                        <p class="flex items-center justify-center w-full">REPS</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card technique">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Technique</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">B+</p>
+                        <p class="flex items-center justify-center w-full">GRADE</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card grade">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Effort</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <hr class="h-px mb-4 border-0 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600">
+            <li class="flex grid grid-cols-3 gap-2">
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">72</p>
+                        <p class="flex items-center justify-center w-full">PLAYER</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Assignment</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">92</p>
+                        <p class="flex items-center justify-center w-full">REPS</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card technique">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Technique</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-white">
+                        <p class="flex items-center justify-center w-full text-4xl">B+</p>
+                        <p class="flex items-center justify-center w-full">GRADE</p>
+                    </div>
+                    <div class="wrapper flex items-center justify-center w-full">
+                        <div class="card grade">
+                            <div class="circle">
+                                <div class="bar"></div>
+                                <div class="box">
+                                    <span class="assign-percent text-white">
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="flex items-center justify-center w-full text-white">Effort</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <hr class="h-px mb-4 border-0 bg-gradient-to-r from-slate-600 via-slate-300 to-slate-600">
+        </ul>
     </div>
-    <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.rawgit.com/kottenator/jquery-circle-progress/1.2.0/dist/circle-progress.js"></script>
-    <script src="{% static 'js/dashboard.js' %}"></script>
-</body>
-
-</html>
+</div>
+{% endblock content %}
+{% block staticjs %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock staticjs %}

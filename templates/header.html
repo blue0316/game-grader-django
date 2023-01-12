@@ -1,0 +1,28 @@
+{% block header %}
+<div class="m-4 flex justify-between">
+    <div class="flex items-center">
+        <button class="p-1 mr-4 text-white" @click="sidebarOpen = !sidebarOpen">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </div>
+    <div>
+        <!-- <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full">
+            Add a Game
+            <button class="bg-cyan-400 text-white active:bg-cyan-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
+        </button> -->
+        <!-- Button trigger modal for add game-->
+        <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full"
+            onclick="toggleModal('modal-id')">
+            Add a Game
+        </button>
+
+        <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 ml-4 rounded-full">
+            Add a Practice
+        </button>
+    </div>
+</div>
+{% endblock header %}

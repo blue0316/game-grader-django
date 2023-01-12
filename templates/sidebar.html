@@ -1,0 +1,89 @@
+{% block sidebar %}
+<aside class="flex-shrink-0 w-64 flex flex-col transition-all duration-300 sticky top-0	"
+:class="{ '-ml-64': !sidebarOpen }">
+
+<nav class="flex-1 flex flex-col bg-slate-800 grid grid-cols-1 gap-4 content-between">
+    <div>
+        <a href="#" class="p-2 flex items-center">
+            <div class="text-white text-8xl">G</div>
+            <div class="text-white ml-4">Welcome, Daniel</div>
+        </a>
+        <a href="#" class="p-2 flex text-white hover:text-cyan-400">
+            <span>
+                <i class="fa-solid fa-house text-2xl"></i>
+            </span>
+            <p class="ml-4 ">
+                Dashboard
+            </p>
+        </a>
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <span>
+                <i class="fa-solid fa-calendar-days text-2xl"></i>
+            </span>
+            <p class="ml-4">
+                Schedule
+            </p>
+        </a>
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <div>
+                <span>
+                    <i class="fa-solid fa-list text-2xl"></i>
+                </span>
+            </div>
+            <p class="ml-4">
+                <span>
+                    Manage Team
+                </span>
+                <span class="ml-8">
+                    5
+                </span>
+            </p>
+        </a>
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <span>
+                <i class="fa fa-pen-to-square text-2xl"></i>
+            </span>
+            <p class="ml-4">
+                Position Editor
+            </p>
+        </a>
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <span>
+                <i class="fa-solid fa-gear text-2xl"></i>
+            </span>
+            <p class="ml-4">
+                Settings
+            </p>
+        </a>
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <span>
+                <i class="fa-solid fa-circle-question text-2xl"></i>
+            </span>
+            <p class="ml-4">
+                Help
+            </p>
+        </a>
+
+    </div>
+    <div>
+
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <span>
+                <i class="fa-solid fa-circle-user text-2xl"></i>
+            </span>
+            <p class="ml-4">
+                Profile
+            </p>
+        </a>
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+            <span>
+                <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
+            </span>
+            <p class="ml-4">
+                Logout
+            </p>
+        </a>
+    </div>
+</nav>
+</aside>
+{% endblock sidebar %}
