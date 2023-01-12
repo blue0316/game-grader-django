@@ -19,3 +19,11 @@ let options = {
 //   $(".react .bar").circleProgress({
 //     value: 0.60
 //   });
+
+function toggleModal(modalID){
+  document.getElementById(modalID).classList.toggle("hidden");
+  document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+  document.getElementById(modalID).classList.toggle("flex");
+  document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+}
+// toggleModal("modal-id");
