@@ -7,10 +7,9 @@ from django.utils.translation import gettext as _
 
 # Create your models here.
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, username, password=None, **extra_fields):
+    def create_user(self, username, password=None, **extra_fields):
         if not username:
             raise ValueError('The UserName field must be set')
-        email = self.normalize_email(email)
         user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save()
@@ -28,11 +27,11 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(username, password, **extra_fields)
 
 class User(AbstractUser):
-    uuid = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4)
+    uuid = models.CharField(max_length=50, primary_key=True)
     username = models.CharField(max_length=1000, unique=True, blank=True, null = True)
     profile_pic = models.ImageField(upload_to='uploads', null=True, blank=True)
     # code = models.CharField(max_length = 50, null=True, blank=True)
-    role = models.CharField(max_length=10)
+    role = models.CharField(max_length=10, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -42,10 +41,20 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
 
+class TeamDetail(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    team_name = models.CharField(max_length=50)
+    team_code = models.CharField(max_length=50)
+
+    def __str__(self):
+        return "%s"%(self.team_name)
+
+
 class InviteTeam(models.Model):
-    invite_by = models.ForeignKey(User,on_delete=models.CASCADE)
-    invite_to = models.CharField(max_length = 50)
-    code = models.CharField(max_length = 50, null=True, blank=True)
-    role = models.CharField(max_length = 50)
+    invite_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='invite_by')
+    invite_to = models.ForeignKey(User,on_delete=models.CASCADE, related_name='invite_to')
+    team = models.ForeignKey(TeamDetail,on_delete=models.CASCADE, default=1)
+    # code = models.CharField(max_length = 50, null=True, blank=True)
+    # role = models.CharField(max_length = 50)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
