@@ -38,10 +38,10 @@
   transform: translate(-50%, -50%) scale(0.8);
   transition: all 0.2s;
 }
-/* .card .circle:hover .box{
+.card .circle:hover .box{
   transform: translate(-50%, -50%) scale(0.91);
-} */
-/* .card .circle .box span, */
+}
+.card .circle .box span,
 
 .circle .box span{
   font-size: 38px;
@@ -50,11 +50,11 @@
   transform: translate(-45%, -45%);
   transition: all 0.1s;
 }
-/* .card .circle:hover .box span{
+.card .circle:hover .box span{
   transform: translate(-45%, -45%) scale(1.09);
-} */
+}
 
-/* @media(max-width: 753px){
+@media(max-width: 753px){
   .wrapper{
     max-width: 700px;
   }
@@ -62,12 +62,12 @@
     width: calc(50% - 20px);
     margin-bottom: 20px;
   }
-} */
-/* @media(max-width: 505px){
+}
+@media(max-width: 505px){
   .wrapper{
     max-width: 500px;
   }
   .wrapper .card{
     width: 100%;
   }
-} */
+}
