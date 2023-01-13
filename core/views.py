@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView
 from django.views import View
-from core.models import User, TeamDetail, InviteTeam
+from core.models import User, TeamDetail, InviteTeam, TeamMember
 from core.forms import UserRegistrationForm, UserLoginForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
@@ -60,6 +60,7 @@ class SignupView(View):
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
+        print("--->>>",request.user)
         if request.user.is_authenticated:
             return redirect('dashboard')
         try:
@@ -175,8 +176,9 @@ class InviteTeamView(View):
                                     send_invite_mail(email, user)
                                     team_detail = TeamDetail.objects.get(team_code=code)
                                     invite_team = InviteTeam.objects.create(invite_by=request.user, invite_to=user, team=team_detail)
-
                                     invite_team.save()
+                                    team_member = TeamMember.objects.create(user=request.user, teamname=team_detail, member=user)
+                                    team_member.save()
                                     return redirect('dashboard')
                                 else:
                                     messages.error(request, 'Invite not sent...')
@@ -199,4 +201,22 @@ class DashboardView(View):
         return render(request, 'dashboard.html')
 class ProfileView(View):
     def get(self,request):
-        return render(request, 'profile.html')
+        team_list = []
+        user = request.user
+        team = TeamDetail.objects.filter(user=request.user)
+        for tm in team:
+            team_list.append(tm.team_name)
+        print("-------",team_list)
+        context = {
+            "first_name":user.first_name,
+            "last_name":user.last_name,
+            "email":user.email,
+            "password":user.password,
+            "team":team_list
+        }
+        return render(request, 'profile.html',  {"context":context})
+
+
+def log_out(request):
+        logout(request)
+        return redirect('login')

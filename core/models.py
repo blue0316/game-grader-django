@@ -28,8 +28,8 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractUser):
     uuid = models.CharField(max_length=50, primary_key=True)
-    username = models.CharField(max_length=1000, unique=True, blank=True, null = True)
-    profile_pic = models.ImageField(upload_to='uploads', null=True, blank=True)
+    username = models.CharField(max_length=50, unique=True)
+    profile_pic = models.ImageField(upload_to='profile', null=True, blank=True)
     # code = models.CharField(max_length = 50, null=True, blank=True)
     role = models.CharField(max_length=10, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -45,6 +45,8 @@ class TeamDetail(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     team_name = models.CharField(max_length=50)
     team_code = models.CharField(max_length=50)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return "%s"%(self.team_name)
@@ -53,8 +55,21 @@ class TeamDetail(models.Model):
 class InviteTeam(models.Model):
     invite_by = models.ForeignKey(User,on_delete=models.CASCADE, related_name='invite_by')
     invite_to = models.ForeignKey(User,on_delete=models.CASCADE, related_name='invite_to')
-    team = models.ForeignKey(TeamDetail,on_delete=models.CASCADE, default=1)
-    # code = models.CharField(max_length = 50, null=True, blank=True)
-    # role = models.CharField(max_length = 50)
+    team = models.ForeignKey(TeamDetail,on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class ActiveTeam(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    active_team = models.ForeignKey(TeamDetail,on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class TeamMember(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='user')
+    teamname = models.ForeignKey(TeamDetail,on_delete=models.CASCADE)
+    member = models.ForeignKey(User,on_delete=models.CASCADE, related_name='team_member')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
