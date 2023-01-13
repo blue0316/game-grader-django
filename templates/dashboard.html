@@ -1,5 +1,8 @@
+{% extends "base.html" %}
 {% load static %}
-{% load static %}
+{% block staticcss %}
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
+{% endblock staticcss %}
 {% block content %}
 <div class="flex column gap-4">
     <div class="w-2/6">
