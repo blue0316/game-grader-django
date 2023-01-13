@@ -8,7 +8,7 @@
             <div class="text-white text-8xl">G</div>
             <div class="text-white ml-4">Welcome, Daniel</div>
         </a>
-        <a href="#" class="p-2 flex text-white hover:text-cyan-400">
+        <a href="{% url 'dashboard' %}" class="p-2 flex text-white hover:text-cyan-400 side-nav-group">
             <span>
                 <i class="fa-solid fa-house text-2xl"></i>
             </span>
@@ -16,7 +16,7 @@
                 Dashboard
             </p>
         </a>
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <span>
                 <i class="fa-solid fa-calendar-days text-2xl"></i>
             </span>
@@ -24,7 +24,7 @@
                 Schedule
             </p>
         </a>
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <div>
                 <span>
                     <i class="fa-solid fa-list text-2xl"></i>
@@ -39,7 +39,7 @@
                 </span>
             </p>
         </a>
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <span>
                 <i class="fa fa-pen-to-square text-2xl"></i>
             </span>
@@ -47,7 +47,7 @@
                 Position Editor
             </p>
         </a>
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <span>
                 <i class="fa-solid fa-gear text-2xl"></i>
             </span>
@@ -55,7 +55,7 @@
                 Settings
             </p>
         </a>
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <span>
                 <i class="fa-solid fa-circle-question text-2xl"></i>
             </span>
@@ -63,11 +63,9 @@
                 Help
             </p>
         </a>
-
     </div>
     <div>
-
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="{% url 'profile' %}" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <span>
                 <i class="fa-solid fa-circle-user text-2xl"></i>
             </span>
@@ -75,7 +73,7 @@
                 Profile
             </p>
         </a>
-        <a href="#" class="p-2 flex hover:text-cyan-400 text-white">
+        <a href="#" class="p-2 flex hover:text-cyan-400 text-white side-nav-group">
             <span>
                 <i class="fa-solid fa-arrow-right-from-bracket text-2xl"></i>
             </span>
