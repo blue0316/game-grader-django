@@ -13,7 +13,9 @@
 
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
+    {% block staticcss %}
+    {% endblock staticcss %}
+    <link href="{% static 'css/sidebar.css' %}" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/datepicker.min.js"></script>
 
 
@@ -45,7 +47,7 @@
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.rawgit.com/kottenator/jquery-circle-progress/1.2.0/dist/circle-progress.js"></script>
-    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/sidebar.js' %}"></script>
     {% block staticjs %}
     
     {% endblock staticjs %}
