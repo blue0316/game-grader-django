@@ -216,7 +216,9 @@ class ProfileView(View):
         }
         return render(request, 'profile.html',  {"context":context})
 
-
+class ManageTeamView(View):
+    def get(self,request):
+        return render(request, 'manageteam.html')
 def log_out(request):
         logout(request)
         return redirect('login')
