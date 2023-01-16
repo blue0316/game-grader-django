@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import User, InviteTeam, TeamDetail
+from core.models import User, InviteTeam, TeamDetail, ActiveTeam
 
 # Register your models here.
 @admin.register(User)
@@ -13,3 +13,7 @@ class InviteTeamAdmin(admin.ModelAdmin):
 @admin.register(InviteTeam)
 class TeamDetailAdmin(admin.ModelAdmin):
     list_display = ('invite_by','invite_to','team')
+
+@admin.register(ActiveTeam)
+class ActiveTeamAdmin(admin.ModelAdmin):
+    list_display = ('user','active_team')

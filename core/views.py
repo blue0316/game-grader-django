@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView
 from django.views import View
-from core.models import User, TeamDetail, InviteTeam, TeamMember
+from core.models import User, TeamDetail, InviteTeam, TeamMember, ActiveTeam
 from core.forms import UserRegistrationForm, UserLoginForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 import uuid
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 
 # Create your views here.
@@ -199,8 +201,11 @@ class InviteTeamView(View):
 class DashboardView(View):
     def get(self,request):
         return render(request, 'dashboard.html')
+
+
+@method_decorator(csrf_exempt, name='dispatch')
 class ProfileView(View):
-    def get(self,request):
+    def get(self, request, *args, **kwargs):
         team_list = []
         user = request.user
         team = TeamDetail.objects.filter(user=request.user)
@@ -219,6 +224,19 @@ class ProfileView(View):
 class ManageTeamView(View):
     def get(self,request):
         return render(request, 'manageteam.html')
+    def post(self, request, *args, **kwargs):
+        tm_data = TeamDetail.objects.get(team_name=request.POST['team'])
+        # team = ActiveTeam.objects.update_or_create(user=request.user, active_team=tm_data)
+        if ActiveTeam.objects.filter(user=request.user):
+            acteam = ActiveTeam.objects.get(user=request.user)
+            acteam.active_team = tm_data
+            acteam.save()
+        else:
+            activeteam = ActiveTeam.objects.create(user=request.user,active_team=tm_data)
+            activeteam.save()
+        return render(request, 'profile.html')
+
+
 def log_out(request):
         logout(request)
         return redirect('login')
