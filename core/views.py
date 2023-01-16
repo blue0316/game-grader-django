@@ -221,9 +221,6 @@ class ProfileView(View):
         }
         return render(request, 'profile.html',  {"context":context})
 
-class ManageTeamView(View):
-    def get(self,request):
-        return render(request, 'manageteam.html')
     def post(self, request, *args, **kwargs):
         tm_data = TeamDetail.objects.get(team_name=request.POST['team'])
         # team = ActiveTeam.objects.update_or_create(user=request.user, active_team=tm_data)
@@ -236,6 +233,10 @@ class ManageTeamView(View):
             activeteam.save()
         return render(request, 'profile.html')
 
+class ManageTeamView(View):
+    def get(self,request):
+        return render(request, 'manageteam.html')
+    
 
 def log_out(request):
         logout(request)
