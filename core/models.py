@@ -28,10 +28,24 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractUser):
     uuid = models.CharField(max_length=50, primary_key=True)
+    # uuid = models.UUIDField(auto_created=True ,max_length=8, primary_key=True, default=uuid.uuid4)
+    # uuid = models.UUIDField(primary_key=True, max_length=8, default=uuid.uuid4)
     username = models.CharField(max_length=50, unique=True)
-    profile_pic = models.ImageField(upload_to='profile', null=True, blank=True)
-    # code = models.CharField(max_length = 50, null=True, blank=True)
+    phone = models.CharField(max_length=12, null=True, blank=True)
     role = models.CharField(max_length=10, null=True, blank=True)
+    height = models.FloatField(null=True, blank=True)
+    weight = models.FloatField(null=True, blank=True)
+    graduation = models.IntegerField(null=True, blank=True)
+    seasonofaccess = models.CharField(max_length=500,null=True, blank=True)
+    biography = models.CharField(max_length=500, null=True, blank=True)
+    positions = models.CharField(max_length=500, null=True, blank=True)
+    tags = models.CharField(max_length=500, null=True, blank=True)
+    videolinks = models.CharField(max_length=512, null=True, blank=True)
+    coverpic = models.ImageField(upload_to='cover_pic', null=True, blank=True)
+    transcript = models.FileField(upload_to='transcript_pic', null=True, blank=True)
+    document = models.FileField(upload_to='document_pic', null=True, blank=True)
+    # profile_pic = models.ImageField(upload_to='profile', null=True, blank=True)
+    # code = models.CharField(max_length = 50, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -40,6 +54,8 @@ class User(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
+    def __str__(self):
+        return "%s %s"%(self.first_name,self.last_name)
 
 class TeamDetail(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

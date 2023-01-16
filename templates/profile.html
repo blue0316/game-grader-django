@@ -102,9 +102,13 @@
                         <div class="flex justify-start col-span-8 ml-4">
                             <div>
                                 <p class="text-gray-500">TEAM</p>
-                                {% for team in context.team %}
-                                <p class="text-white">{{team}}</p>
-                                {% endfor %}
+                                {% comment %} <p class="text-white">{{team}}</p> {% endcomment %}
+                                <select id="teams" onchange="send_data()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Select your team</option>
+                                    {% for team in context.team %}
+                                    <option value={{team}} >{{team}}</option>
+                                    {% endfor %}
+                                  </select>
                             </div>
                         </div>
                     </div>
@@ -115,5 +119,19 @@
 </div>
 {% endblock content %}
 {% block staticjs %}
-    <script src="{% static 'js/modal.js' %}"></script>
+<script>
+    
+    function send_data(e){
+        var value = document.getElementById("teams").value;
+
+        console.log(value)
+
+        data = {
+                "team":value,
+        }
+        $.post("/profile/",data);
+    
+    }
+</script>
+<script src="{% static 'js/modal.js' %}"></script>
 {% endblock staticjs %}
