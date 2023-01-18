@@ -89,3 +89,15 @@ class TeamMember(models.Model):
     member = models.ForeignKey(User,on_delete=models.CASCADE, related_name='team_member')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "%s"%(self.member)
+
+class NewGame(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    event = models.CharField(max_length=100)
+    eventdate = models.DateField()
+    sharewith = models.ManyToManyField(User, related_name='sharewith')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView
 from django.views import View
-from core.models import User, TeamDetail, InviteTeam, TeamMember, ActiveTeam
+from core.models import User, TeamDetail, InviteTeam, TeamMember, ActiveTeam, NewGame
 from core.forms import UserRegistrationForm, UserLoginForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -114,15 +114,15 @@ def send_invite_mail(user_mail, user):
     send_mail(subject=subject, from_email = gmail_user , message=body ,recipient_list =to, fail_silently=False)
 
 
-class DashboardView(View):
-    def get(self,request):
-        # if request.user.is_authenticated:
-            return render(request, 'dashboard.html')
+# class DashboardView(View):
+#     def get(self,request):
+#         # if request.user.is_authenticated:
+#             return render(request, 'dashboard.html')
 
 
-class ManageTeamView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'manageteam.html')
+# class ManageTeamView(View):
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'manageteam.html')
 
 class AddTeamDetailView(View):
     def get(self, request, *args, **kwargs):
@@ -152,7 +152,7 @@ class InviteTeamView(View):
         # if request.user.is_authenticated:
         #     user = request.user
         #     if user=="Admin":
-                print("--->>",request.user)
+                print("---LoginUser:>>",request.user)
                 return render(request, 'invite.html')
             # else:
             #     return render(request, 'dashboard.html',{'error':'Error: You are not Admin...'})
@@ -197,10 +197,49 @@ class InviteTeamView(View):
         else:
             messages.error(request, "Please Enter First-name...")
         return redirect('invite_team')
-        
+
+@method_decorator(csrf_exempt, name='dispatch')
 class DashboardView(View):
-    def get(self,request):
-        return render(request, 'dashboard.html')
+    def get(self, request, *args, **kwargs):
+        team_members=[]
+        active_team = ActiveTeam.objects.get(user=request.user)
+        team_member = TeamMember.objects.filter(user=request.user, teamname=active_team.active_team)
+        # print("===>>",team_member.user)
+        # print("===>>",team_member.teamname)
+        # print("===>>",team_member.member)
+        for member in team_member:
+            team_members.append(member.member)
+        context = {
+            'team_member':team_members
+        }
+        return render(request, 'dashboard.html', {'context':context})
+
+    def post(self, request, *args, **kwargs):     
+        return redirect('dashboard')
+
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class AddgameView(View):
+    def post(self, request, *args, **kwargs):
+        print("-->",request.POST['title'])
+        print("-->",request.POST['event'])
+        print("-->",request.POST['date'])
+        print("-->",request.POST.getlist('sharelist[]'))
+
+        sharelist = request.POST.getlist('sharelist[]')
+
+
+        # users = User.objects.filter()
+
+        # newgame = NewGame.objects.create(user=request.user, title=request.POST['title'], event=request.POST['event'], eventdate=request.POST['date'])
+        # newgame.save()
+        # newgame.sharewith.set(users)
+        # newgame.save()
+
+
+        return redirect('dashboard')
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')
