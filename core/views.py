@@ -114,16 +114,6 @@ def send_invite_mail(user_mail, user):
     send_mail(subject=subject, from_email = gmail_user , message=body ,recipient_list =to, fail_silently=False)
 
 
-# class DashboardView(View):
-#     def get(self,request):
-#         # if request.user.is_authenticated:
-#             return render(request, 'dashboard.html')
-
-
-# class ManageTeamView(View):
-#     def get(self, request, *args, **kwargs):
-#         return render(request, 'manageteam.html')
-
 class AddTeamDetailView(View):
     def get(self, request, *args, **kwargs):
         team_code = str(uuid.uuid4().hex[:8])
@@ -147,7 +137,7 @@ class AddTeamDetailView(View):
         return render(request, 'addteam.html')
         
         
-class InviteTeamView(View):
+"""class InviteTeamView(View):
     def get(self, request, *args, **kwargs):
         # if request.user.is_authenticated:
         #     user = request.user
@@ -196,7 +186,52 @@ class InviteTeamView(View):
                 messages.error(request, "Please Enter Last-name...")
         else:
             messages.error(request, "Please Enter First-name...")
-        return redirect('invite_team')
+        return redirect('invite_team')"""
+
+class InviteTeamView(View):
+    def get(self, request, *args, **kwargs):
+        # if request.user.is_authenticated:
+        #     user = request.user
+        #     if user=="Admin":
+                print("---LoginUser:>>",request.user)
+                return render(request, 'invite.html')
+            # else:
+            #     return render(request, 'dashboard.html',{'error':'Error: You are not Admin...'}) 
+
+    def post(self, request, *args, **kwargs):
+        f_name = request.POST['f_name']
+        l_name = request.POST['l_name']
+        email = request.POST['email_address']
+        phone = request.POST['phone_number']
+        role = request.POST['role']
+        height = request.POST['height']
+        weight = request.POST['weight']
+        graduation_year = request.POST['graduation_year']
+        seasons = request.POST['basic']
+        biography = request.POST['Biography']
+        position = request.POST['position-check']
+        tags = request.POST['groupsortags']
+        coverpic = request.POST['cover-pic']
+        document = request.POST['Transcripts']
+        dropimg = request.POST['drop-img']
+
+        print("-->f_name :",f_name)
+        print("-->l_name :",l_name)
+        print("-->email :",email)
+        print("-->phone :",phone)
+        print("-->role :",role)
+        print("-->height :",height)
+        print("-->weight :",weight)
+        print("-->graduation_year :",graduation_year)
+        print("-->seasons :",seasons)
+        print("-->biography :",biography)
+        print("-->tags :",tags)
+        print("-->position :",position)
+        print("-->coverpic :",coverpic)
+        print("-->document :",document)
+        print("-->dropimg :",dropimg)
+
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DashboardView(View):
@@ -204,9 +239,6 @@ class DashboardView(View):
         team_members=[]
         active_team = ActiveTeam.objects.get(user=request.user)
         team_member = TeamMember.objects.filter(user=request.user, teamname=active_team.active_team)
-        # print("===>>",team_member.user)
-        # print("===>>",team_member.teamname)
-        # print("===>>",team_member.member)
         for member in team_member:
             team_members.append(member.member)
         context = {
@@ -218,28 +250,42 @@ class DashboardView(View):
         return redirect('dashboard')
 
 
-
 @method_decorator(csrf_exempt, name='dispatch')
 class AddgameView(View):
     def post(self, request, *args, **kwargs):
-        print("-->",request.POST['title'])
-        print("-->",request.POST['event'])
-        print("-->",request.POST['date'])
-        print("-->",request.POST.getlist('sharelist[]'))
-
+        # print("-->",request.POST['title'])
+        # print("-->",request.POST['event'])
+        # print("-->",request.POST['date'])
+        # print("-->",request.POST.getlist('sharelist[]'))
         sharelist = request.POST.getlist('sharelist[]')
 
+        userlist = []
+        for i in sharelist:
+            if i == "only me":
+                user = request.user.username
+                userlist.append(user)
+                
+            if i == "Staff":
+                user = User.objects.filter(role='Staff')
+                for j in user:
+                    userlist.append(j.username)
+                
+            if i == "All Team":
+                active = ActiveTeam.objects.get(user=request.user)
+                tmembers = TeamMember.objects.filter(teamname=active.active_team)
+                for ff in tmembers:
+                    userlist.append(ff.member)
 
-        # users = User.objects.filter()
+            if i != "only me" and i != "Staff" and i != "All Team":
+                userlist.append(i)
 
-        # newgame = NewGame.objects.create(user=request.user, title=request.POST['title'], event=request.POST['event'], eventdate=request.POST['date'])
-        # newgame.save()
-        # newgame.sharewith.set(users)
-        # newgame.save()
+        users = User.objects.filter(username__in=userlist)
 
-
+        newgame = NewGame.objects.create(user=request.user, title=request.POST['title'], event=request.POST['event'], eventdate=request.POST['date'])
+        newgame.save()
+        newgame.sharewith.set(users)
+        newgame.save()
         return redirect('dashboard')
-
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -262,7 +308,6 @@ class ProfileView(View):
 
     def post(self, request, *args, **kwargs):
         tm_data = TeamDetail.objects.get(team_name=request.POST['team'])
-        # team = ActiveTeam.objects.update_or_create(user=request.user, active_team=tm_data)
         if ActiveTeam.objects.filter(user=request.user):
             acteam = ActiveTeam.objects.get(user=request.user)
             acteam.active_team = tm_data
@@ -272,8 +317,9 @@ class ProfileView(View):
             activeteam.save()
         return render(request, 'profile.html')
 
+
 class ManageTeamView(View):
-    def get(self,request):
+    def get(self, request, *args, **kwargs):
         return render(request, 'manageteam.html')
     
 

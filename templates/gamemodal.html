@@ -68,7 +68,7 @@
                                 </div>
                                 <input datepicker type="text" id='date-picker'
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Select date">
+                                    placeholder="Select date" datepicker-format="yyyy-mm-dd">
                             </div>
                         </div>
                     </div>
@@ -122,11 +122,7 @@
 {% endblock gamemodal %}
 {% block staticjs %}
 <script>
-
     function newgame() {
-        {% comment %} var v = document.getElementById("#game_title1").value;
-        console.log(v) {% endcomment %}
-
         var title = $("#game_title1").val();
         var events = document.querySelector('input[name="event_type"]:checked').value;
         var date = $('#date-picker').val();
@@ -134,12 +130,6 @@
         document.querySelectorAll('input[name="checkme"]:checked').forEach(function (e) {
             sharelist.push(e.value)
         });
-
-
-        //{% comment %} var fav = [];
-        //$.each($("input[name='checkme']:checked"), function(){            
-        //    fav.push($(this).val());
-        //}); {% endcomment %}
         data = {
             "title": title,
             "event": events,
