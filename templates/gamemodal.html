@@ -31,31 +31,58 @@
                     <input type="text" id="game_title1" class="bg-gray-600 rounded p-2 text-white" placeholder="John"
                         required>
                 </div>
-                <div class="grid justify-cente mt-2">
-                    <div>
-                        <label for="game_title"
-                            class="block mb-2 text-sm font-medium text-white flex justify-center">Event
-                            Type</label>
-                    </div>
-                    <ul class="grid grid-cols-2 gap-x-5 max-w-md mx-auto">
-                        <li class="relative">
-                            <input class="sr-only peer" type="radio" value="GAME" name="event_type" id="eventname1">
-                            <label
-                                class="flex p-2 bg-gray-600 focus:bg-gray-500 hover:bg-gray-400 peer-checked:bg-gray-400 rounded justify-center text-white"
-                                for="eventname1">GAME</label>
-                        <li class="relative">
-                            <input class="sr-only peer" type="radio" value="PRACTICE" name="event_type" id="eventname2">
-                            <label
-                                class="flex p-2 bg-gray-600 focus:bg-gray-500 hover:bg-gray-400 peer-checked:bg-gray-400 rounded justify-center text-white"
-                                for="eventname2">PRACTICE</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex justify-between grid grid-cols-2 gap-4 mt-2">
-                    <div class="flex justify-center">
-                        <div>
-                            <div class="text-white flex justify-center">
-                                Select Event Date
+                <!--body-->
+                <div class="relative p-6 flex-auto bg-gray-700 justify-center">
+                    <form action="" method="post">
+                        <div class="grid justify-center">
+                            <label for="game_title"
+                                class="block mb-2 text-sm font-medium text-white flex justify-center">Game Title</label>
+                            <input type="text" id="game_title" class="bg-gray-600 rounded p-2 text-white"
+                                placeholder="John" required>
+                        </div>
+                        <div class="grid justify-cente mt-2">
+                            <div>
+                                <label for="game_title"
+                                    class="mb-2 text-sm font-medium text-white flex justify-center">Event
+                                    Type</label>
+                            </div>
+                            <ul class="grid grid-cols-2 gap-x-5 max-w-md mx-auto">
+                                <li class="relative">
+                                    <input class="sr-only peer" type="radio" value="game" name="event_type" id="game">
+                                    <label
+                                        class="flex p-2 bg-gray-600 focus:bg-gray-500 hover:bg-gray-400 peer-checked:bg-gray-400 rounded justify-center text-white"
+                                        for="game">GAME</label>
+                                <li class="relative">
+                                    <input class="sr-only peer" type="radio" value="practice" name="event_type"
+                                        id="practice">
+                                    <label
+                                        class="flex p-2 bg-gray-600 focus:bg-gray-500 hover:bg-gray-400 peer-checked:bg-gray-400 rounded justify-center text-white"
+                                        for="practice">PRACTICE</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grid justify-between grid-cols-2 gap-4 mt-2">
+                            <div class="flex justify-center">
+                                <div>
+                                    <div class="text-white flex justify-center">
+                                        Select Event Date
+                                    </div>
+                                    <div class="relative mt-2">
+                                        <div
+                                            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                                fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                        <input datepicker type="text"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Select date">
+                                    </div>
+                                </div>
                             </div>
                             <div class="relative mt-2">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
