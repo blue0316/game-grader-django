@@ -148,3 +148,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = 'True'
 EMAIL_HOST_USER = 'onlyfun.nowork@gmail.com'
 EMAIL_HOST_PASSWORD = 'pexqucikqxesfido'
+
+# DATE_INPUT_FORMATS = ['%m/%d/%Y']
+# DATE_INPUT_FORMATS = ("%m/%d/%Y",)
+# DATE_FORMAT = 'm/d/Y'
+# USE_L10N = True

@@ -24,4 +24,7 @@ class TeamMemberAdmin(admin.ModelAdmin):
 
 @admin.register(NewGame)
 class NewGameAdmin(admin.ModelAdmin):
-    list_display = ('user','title','event','eventdate')
+    list_display = ('user','title','event','eventdate','get_sharewith')
+
+    def get_sharewith(self,obj):
+        return [sharewith.username for sharewith in obj.sharewith.all()]

@@ -54,8 +54,10 @@ class User(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
+    # def __str__(self):
+    #     return "%s %s"%(self.first_name,self.last_name)
     def __str__(self):
-        return "%s %s"%(self.first_name,self.last_name)
+        return "%s"%(self.username)
 
 class TeamDetail(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -97,7 +99,7 @@ class NewGame(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     event = models.CharField(max_length=100)
-    eventdate = models.DateField()
+    eventdate = models.DateField(null=True, blank=True)
     sharewith = models.ManyToManyField(User, related_name='sharewith')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
