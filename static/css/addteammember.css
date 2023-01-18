@@ -6,10 +6,53 @@
 .svg-icon path,
 .svg-icon polygon,
 .svg-icon rect {
-  fill: #333;
+  fill: white;
 }
 
 .svg-icon circle {
   stroke: #4691f6;
   stroke-width: 1;
+}
+
+
+.tagify__tag{
+  z-index: auto;
+  background-color: #3b82f6 !important;
+  color: white !important;
+  border-radius: 0.50rem;
+  padding: 8px;
+}
+.tagify__input{
+  padding: 8px;
+}
+.tagify__tag-text{
+  color: white !important;
+}
+.tagify__tag__removeBtn{
+  color: white !important;
+}
+.tagify{
+  border-radius: 0.50rem;
+  background-color: #374151;
+  padding: 4px;
+  align-items: center;
+  font-size: 18px;
+}
+.tagify--focus{
+  border-color: white !important;
+  padding: 4px;
+  color: white;
+}
+.mceEditorArea {
+  font-family: "MS Sans Serif";
+  background: red;
+}
+.tox-menubar{
+  background-color: #374151;
+}
+.tox-editor-header{
+  background-color: #374151;
+}
+.tox-tinymce{
+  background-color: #374151;
 }
