@@ -56,3 +56,59 @@
 .tox-tinymce{
   background-color: #374151;
 }
+
+.dropzone {
+  position: relative;
+  /* border: 10px dotted #FFF; */
+  border-radius: 20px;
+  color: white;
+  font: bold 24px/200px arial;
+  height: 200px;
+  margin: 30px auto;
+  text-align: center;
+  /* width: 200px; */
+
+  width: 100%;
+  background-color: #334155;
+  justify-content: center;
+}
+
+.dropzone.hover {
+  border: 10px solid #FE5;
+  color: #FE5;
+}
+
+.dropzone.dropped {
+  background: #334155;
+  /* border: 10px solid #444; */
+}
+
+.dropzone div {
+  position: absolute;
+  display: contents;
+  /* top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; */
+}
+
+.dropzone img {
+  /* width: 100%; */
+  border-radius: 10px;
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+.dropzone [type="file"] {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
