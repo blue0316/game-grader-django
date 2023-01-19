@@ -213,7 +213,7 @@ class InviteTeamView(View):
         tags = request.POST['groupsortags']
         coverpic = request.POST['cover-pic']
         document = request.POST['Transcripts']
-        dropimg = request.POST['drop-img']
+        drop_img = request.POST['drop-img']
 
         print("-->f_name :",f_name)
         print("-->l_name :",l_name)
@@ -229,22 +229,25 @@ class InviteTeamView(View):
         print("-->position :",position)
         print("-->coverpic :",coverpic)
         print("-->document :",document)
-        print("-->dropimg :",dropimg)
+        print("-->drop-img :",drop_img)
 
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class DashboardView(View):
     def get(self, request, *args, **kwargs):
-        team_members=[]
-        active_team = ActiveTeam.objects.get(user=request.user)
-        team_member = TeamMember.objects.filter(user=request.user, teamname=active_team.active_team)
-        for member in team_member:
-            team_members.append(member.member)
-        context = {
-            'team_member':team_members
-        }
-        return render(request, 'dashboard.html', {'context':context})
+        if ActiveTeam.objects.filter(user=request.user):
+            team_members=[]
+            active_team = ActiveTeam.objects.get(user=request.user)
+            team_member = TeamMember.objects.filter(user=request.user, teamname=active_team.active_team)
+            for member in team_member:
+                team_members.append(member.member)
+            context = {
+                'team_member':team_members
+            }
+            return render(request, 'dashboard.html', {'context':context})
+        else:
+            return render(request, 'dashboard.html')
 
     def post(self, request, *args, **kwargs):     
         return redirect('dashboard')
