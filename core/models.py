@@ -40,7 +40,6 @@ class User(AbstractUser):
     biography = models.CharField(max_length=500, null=True, blank=True)
     positions = models.CharField(max_length=500, null=True, blank=True)
     tags = models.CharField(max_length=500, null=True, blank=True)
-    videolinks = models.CharField(max_length=512, null=True, blank=True)
     coverpic = models.ImageField(upload_to='cover_pic', null=True, blank=True)
     transcript = models.FileField(upload_to='transcript_pic', null=True, blank=True)
     document = models.FileField(upload_to='document_pic', null=True, blank=True)

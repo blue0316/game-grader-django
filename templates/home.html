@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block staticcss %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+{% endblock staticcss %}
+
+{% block content %}
+<br><br><br>
+<div class="flex column gap-2">
+    <div class="flex justify-center">
+        <div class="bg-gray-600 p-8 rounded">
+            <div class="m-2 grid grid-cols-12">
+                <div class="flex justify-start">
+                    <div class="bg-blue-600 w-4 h-8 rounded"></div>
+                </div>
+                <div class="ml-4 text-white col-span-10">
+                    <div class="flex items-center h-full text-2xl">
+                        Today's Schedule
+                    </div>
+                </div>
+                <div class="flex text-black justify-end">
+                    <!-- <input type="text" name="today" class="p-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white" 
+                        placeholder="today"> -->
+                        <select name="drop_down" id="drop_down">
+                            <option value="" selected>today</option>
+                            <option value="">yesterday</option>
+                            <option value="">previousday</option>
+                        </select>
+                </div>
+            </div><br>
+            <div class="w-full grid grid-cols-7">
+                <div>
+                    <label class="text-gray-400 my-2">Week</label><hr><br>
+                    <label class="text-gray-400 my-2">6 Feb - 12 Feb</label><hr>
+                </div>
+                <div>
+                    <label class="text-gray-400 my-2">Plans</label><hr>
+                </div>
+                <div>
+                    <label class="text-gray-400 my-2">Scripts</label><hr>
+                </div>
+                <div>
+                    <label class="text-gray-400 my-2">Time</label><hr>
+                </div>
+                <div>
+                    <label class="text-gray-400 my-2">Views</label><hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
