@@ -1,28 +1,277 @@
+{% load static %}
 {% block header %}
-<div class="m-4 flex justify-between">
+<div class="p-4 flex justify-between bg-slate-800 absolute top-0 z-10" style="width: calc(100% - 18rem);">
     <div class="flex items-center">
         <button class="p-1 mr-4 text-white" @click="sidebarOpen = !sidebarOpen">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 class="h-6 w-6">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
     </div>
-    <div>
-        <!-- <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full">
-            Add a Game
-            <button class="bg-cyan-400 text-white active:bg-cyan-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onclick="toggleModal('modal-id')">
-        </button> -->
+    <div class="flex items-center">
         <!-- Button trigger modal for add game-->
-        <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full"
-            onclick="toggleModal('modal-id')">
-            Add a Game
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4" onclick="toggleModal('modal-id')">
+            + Create
         </button>
 
-        <button class="bg-cyan-400 hover:bg-cyan-600 text-white font-bold py-2 px-4 ml-4 rounded-full">
-            Add a Practice
+        <button id="dropdown-msg-btn" data-dropdown-toggle="dropdown-msg" class="text-white mx-6 text-2xl text-center inline-flex items-center "
+            type="button"><i class="fa fa-message"></i> 
         </button>
+        
+        <!-- Message Dropdown -->
+
+        <div id="dropdown-msg" class="z-10 bg-slate-800 w-max hidden">
+            <div class="text-white flex justify-between p-4">
+                <div class="text-lg">Message</div>
+                <div class="text-lg">---</div>
+            </div>
+            <div class="p-4">
+                <ul>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4 msg-hover">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-andrea-piacquadio-3779760.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                <div class="h-4 w-4 bg-green-400"></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-5 gap-3 items-center w-80">
+                                <div class="text-white">Jarret</div>
+                                <div class="text-white">Waelchi</div>
+                                <div class="flex bg-gray-700 text-gray-500 rounded-lg items-center justify-center">team</div>
+                                <div class="text-white">03:30PM</div>
+                                <div class="flex justify-center">
+                                    <div class="bg-blue-600 w-4 h-4"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-gray-500">
+                                Don't forget about our meeting...
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4 msg-hover">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-anna-nekrashevich-6801642.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                <div class="h-4 w-4 bg-green-400"></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-5 gap-3 items-center w-80">
+                                <div class="text-white">Orval</div>
+                                <div class="text-white">Casper</div>
+                                <div class="flex bg-gray-700 text-gray-500 rounded-lg items-center justify-center">athlete</div>
+                                <div class="text-white">1 day</div>
+                                <div class="flex justify-center">
+                                    <div class="bg-gray-400 w-4 h-4"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-gray-500">
+                                Bring notebooks and pens today...
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4 msg-hover">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-moose-photos-556068.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                <div class="h-4 w-4 bg-green-400"></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-5 gap-3 items-center w-80">
+                                <div class="text-white">Michel</div>
+                                <div class="text-white">Emard</div>
+                                <div class="flex bg-gray-700 text-gray-500 rounded-lg items-center justify-center">you</div>
+                                <div class="text-white">09:30AM</div>
+                                <div class="flex justify-center">
+                                    <div class="bg-blue-600 w-4 h-4"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-gray-500">
+                                What are we wearing for practice?...
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4 msg-hover">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-pixabay-415829.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                <div class="h-4 w-4 bg-green-400"></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-5 gap-3 items-center w-80">
+                                <div class="text-white">Reuben</div>
+                                <div class="text-white">Ward</div>
+                                <div class="flex bg-gray-700 text-gray-500 rounded-lg items-center justify-center">team</div>
+                                <div class="text-white">08:00AM</div>
+                                <div class="flex justify-center">
+                                    <div class="bg-gray-400 w-4 h-4"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-gray-500">
+                                Grade checks are due tomorrow...
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4 msg-hover">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-sound-on-3760856.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                <div class="h-4 w-4 bg-green-400"></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-5 gap-3 items-center w-80">
+                                <div class="text-white">Evalyn</div>
+                                <div class="text-white">Jenkins</div>
+                                <div class="flex bg-gray-700 text-gray-500 rounded-lg items-center justify-center">team</div>
+                                <div class="text-white">07:01AM</div>
+                                <div class="flex justify-center">
+                                    <div class="bg-gray-400 w-4 h-4">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 text-gray-500">
+                                The six week period ends on Friday...
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex p-4 justify-center">
+                <button class="bg-blue-500 text-white h-16 w-96 text-xl">
+                    View in message center
+                </button>
+            </div>
+        </div>
+
+        <button id="dropdown-notification-btn" data-dropdown-toggle="dropdown-noti" class="text-white mx-6 text-2xl text-center inline-flex items-center "
+            type="button"><i class="fa fa-bell"></i> 
+        </button>
+        <!-- Notification Dropdown -->
+        <div id="dropdown-noti" class="z-10 bg-slate-800 w-max hidden">
+            <div class="text-white flex justify-between p-4">
+                <div class="text-lg">Notification</div>
+                <div class="text-lg">---</div>
+            </div>
+            <div class="p-4">
+                <ul>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-sound-on-3760856.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pt-1 pl-1 bg-gray-700 absolute right-0 bottom-0 box-in-out">
+                                <div class="flex h-6 w-6 bg-blue-500 justify-center items-center text-white"><i class="fa fa-message"></i></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-8 gap-3 items-center w-80">
+                                <div class="text-white col-span-2">Jarret</div>
+                                <div class="text-gray-400 col-span-4">@domenica</div>
+                                <div class="flex justify-start col-span-2 items-center grid-cols-2 gap-4">
+                                    <div class="text-white">1h</div>
+                                    <div class="bg-blue-600 w-4 h-4 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-gray-500">Comment on</span><span class="text-white font-medium ml-4">9/3/23 - Team</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-moose-photos-556068.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pt-1 pl-1 bg-gray-700 absolute right-0 bottom-0 box-in-out">
+                                <div class="flex h-6 w-6 bg-red-500 justify-center items-center text-white"><i class="fa fa-heart"></i></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-8 gap-3 items-center w-80">
+                                <div class="text-white col-span-2">Ethal</div>
+                                <div class="text-gray-400 col-span-4">@ethal</div>
+                                <div class="flex justify-start col-span-2 items-center grid-cols-2 gap-4">
+                                    <div class="text-white">2h</div>
+                                    <div class="bg-blue-600 w-4 h-4 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-gray-500">Like on</span><span class="text-white font-medium ml-4">9/3/23 - 7 on 7</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-andrea-piacquadio-3779760.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pt-1 pl-1 bg-gray-700 absolute right-0 bottom-0 box-in-out">
+                                <div class="flex h-6 w-6 bg-green-400 justify-center items-center text-white"><i class="fa fa-basket-shopping"></i></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-8 gap-3 items-center w-80">
+                                <div class="text-white col-span-2">Ethal</div>
+                                <div class="text-gray-400 col-span-4">@ethal</div>
+                                <div class="flex justify-start col-span-2 items-center grid-cols-2 gap-4">
+                                    <div class="text-white">4h</div>
+                                    <div class="bg-blue-600 w-4 h-4 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-gray-500">Suggestion</span><span class="text-white font-medium ml-4">9/3/23 - Warm-up</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-anna-nekrashevich-6801642.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pt-1 pl-1 bg-gray-700 absolute right-0 bottom-0 box-in-out">
+                                <div class="flex h-6 w-6 bg-purple-500 justify-center items-center text-white"><i class="fa fa-star"></i></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-8 gap-3 items-center w-80">
+                                <div class="text-white col-span-2">Ethal</div>
+                                <div class="text-gray-400 col-span-4">@ethal</div>
+                                <div class="flex justify-start col-span-2 items-center grid-cols-2 gap-4">
+                                    <div class="text-white">6h</div>
+                                    <div class="bg-blue-600 w-4 h-4 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-gray-500">Request on</span><span class="text-white font-medium ml-4">9/3/23 - Team</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex items-center h-24 hover:bg-gray-700 p-4">
+                        <div class="h-full relative">
+                            <img src="{% static 'img/pexels-pixabay-415829.jpg' %}" alt="" class="object-cover h-full w-20">
+                            <div class="pt-1 pl-1 bg-gray-700 absolute right-0 bottom-0 box-in-out">
+                                <div class="flex h-6 w-6 bg-blue-500 justify-center items-center text-white"><i class="fa fa-message"></i></div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-8 gap-3 items-center w-80">
+                                <div class="text-white col-span-2">Ethal</div>
+                                <div class="text-gray-400 col-span-4">@ethal</div>
+                                <div class="flex justify-start col-span-2 items-center grid-cols-2 gap-4">
+                                    <div class="text-white">8h</div>
+                                    <div class="bg-blue-600 w-4 h-4 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <span class="text-gray-500">Comment on</span><span class="text-white font-medium ml-4">9/3/23 - Warm-up</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex p-4 justify-center">
+                <button class="bg-blue-500 text-white h-16 w-96">
+                    See all notifications
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock header %}
