@@ -46,6 +46,13 @@ function dropdown() {
     },
   };
 }
+
+//Set current year 
+let currentYear = new Date().getFullYear();
+let nextYear = currentYear + 1;
+let yearRange = currentYear + '-' + nextYear;
+document.querySelector("input[name=basic]").value = `[{"value":"${yearRange}"}]`
+
 // The DOM element you wish to replace with Tagify
 var input = document.querySelector("input[name=basic]");
 // initialize Tagify on the above input node reference

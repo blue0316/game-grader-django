@@ -17,6 +17,15 @@
         <div class="flex justify-center">
             <form class="shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" method='POST'>{% csrf_token %}
                 <!-- Name & description -->
+                <br>
+                {% if messages %}
+                <ul class="messages bg-green-300">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+                <br>
                 <div class="bg-gray-600 p-8 rounded">
                     <div class="m-2 grid grid-cols-12">
                         <div class="flex justify-start">
@@ -28,14 +37,14 @@
                             </div>
                         </div>
                         <div class="flex text-white justify-end">
-                            <button class="text-white text-2xl" type='submit'>Back</button>
+                            <button onclick='invite_team()' class="text-white text-2xl" type='submit'>Back</button>
                         </div>
                     </div>
                     <div class="w-full grid grid-cols-2 gap-10">
                         <div class="grid my-2">
                             <label for="f_name" class="text-white my-2">First Name</label>
                             <input type="text" name="f_name"
-                                class="p-4 mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                class="p-4 mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white" id="fname">
                         </div>
                         <div class="grid my-2">
                             <label for="l_name" class="text-white my-2">Last Name</label>
@@ -101,7 +110,7 @@
                     <div class="w-full">
                         <div>
                             <label for="tags" class="mb-2 text-white">Seasons of Access</label>
-                            <input name='basic' value='2023-2024'>
+                            <input name='basic' id="DEMOID">
                         </div>
                     </div>
                     <div class="mt-4">
@@ -133,80 +142,97 @@
                                 <div class="grid grid-cols-3 gap-4">
                                     <div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-qb" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-qb" type="checkbox" name="position-check" value="QB"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-qb" class="ml-2 text-lg text-white">QB</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-rb" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-rb" type="checkbox" name="position-check" value="RB"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-rb" class="ml-2 text-lg text-white">RB</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-sb" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-sb" type="checkbox" name="position-check" value="SB"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-sb" class="ml-2 text-lg text-white">SB</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-fb" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-fb" type="checkbox" name="position-check" value="FB"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-fb" class="ml-2 text-lg text-white">FB</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-wr" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-wr" type="checkbox" name="position-check" value="WR"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-wr" class="ml-2 text-lg text-white">WR</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-te" type="checkbox"name="position-check"  value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-te" type="checkbox" name="position-check" value="TE"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-te" class="ml-2 text-lg text-white">TE</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-ol" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-ol" type="checkbox" name="position-check" value="OL"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-ol" class="ml-2 text-lg text-white">OL</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-dl" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-dl" type="checkbox" name="position-check" value="DL"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-dl" class="ml-2 text-lg text-white">DL</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-lb" type="checkbox"name="position-check"  value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-lb" type="checkbox" name="position-check" value="LB"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-lb" class="ml-2 text-lg text-white">LB</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-nic" type="checkbox"name="position-check"  value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-nic" type="checkbox" name="position-check" value="NIC"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-nic" class="ml-2 text-lg text-white">NIC</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-saf" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-saf" type="checkbox" name="position-check" value="SAF"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-saf" class="ml-2 text-lg text-white">SAF</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-cb" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-cb" type="checkbox" name="position-check" value="CB"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-cb" class="ml-2 text-lg text-white">CB</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-k" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-k" type="checkbox" name="position-check" value="K"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-k" class="ml-2 text-lg text-white">K</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-p" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-p" type="checkbox" name="position-check" value="p"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-p" class="ml-2 text-lg text-white">p</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="checkbox-ls" type="checkbox" name="position-check" value="" class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                                            <input id="checkbox-ls" type="checkbox" name="position-check" value="LS"
+                                                class="w-7 h-7 text-blue-600 bg-gray-100 border-gray-300 rounded">
                                             <label for="checkbox-ls" class="ml-2 text-lg text-white">LS</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="text" name="other-option" class="p-4 bg-gray-700 border rounded-md focus:ring-blue-500 text-white" placeholder="other option">
+                                    <input type="text" name="other-option"
+                                        class="p-4 bg-gray-700 border rounded-md focus:ring-blue-500 text-white"
+                                        placeholder="other option">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="mt-4">
                         <label for="groupsortags" class="text-white mt-4">Groups or Tags</label>
-                        <input name='groupsortags' class="mt-4" value="Linemen">  
+                        <input name='groupsortags' class="mt-4" value="Linemen">
                     </div>
                 </div>
 
@@ -262,18 +288,22 @@
                 </div>
             </form>
         </div>
-        <br>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                {% endfor %}
-        </ul>
-        {% endif %}
     </div>
 </div>
 </div>
 {% endblock content %}
 {% block staticjs %}
 <script src="{% static 'js/addteammember.js' %}"></script>
+<!-- <script>
+    function invite_team() {
+        var positions = [];
+        document.querySelectorAll('input[name="position-check"]:checked').forEach(function (e) {
+            positions.push(e.value)
+        });
+        data = {
+            "positions": positions
+        }
+        $.post("/inviteteam/", data)
+    }
+</script> -->
 {% endblock staticjs %}

@@ -209,28 +209,42 @@ class InviteTeamView(View):
         graduation_year = request.POST['graduation_year']
         seasons = request.POST['basic']
         biography = request.POST['Biography']
-        position = request.POST['position-check']
+        position = request.POST.getlist('position-check')
         tags = request.POST['groupsortags']
         coverpic = request.POST['cover-pic']
-        document = request.POST['Transcripts']
-        drop_img = request.POST['drop-img']
+        transcripts = request.POST['Transcripts']
+        document = request.POST['drop-img']
 
-        print("-->f_name :",f_name)
-        print("-->l_name :",l_name)
-        print("-->email :",email)
-        print("-->phone :",phone)
-        print("-->role :",role)
-        print("-->height :",height)
-        print("-->weight :",weight)
-        print("-->graduation_year :",graduation_year)
-        print("-->seasons :",seasons)
-        print("-->biography :",biography)
-        print("-->tags :",tags)
-        print("-->position :",position)
-        print("-->coverpic :",coverpic)
-        print("-->document :",document)
-        print("-->drop-img :",drop_img)
-
+        if f_name != '':
+            if l_name != '':
+                if email != '':
+                    if phone != '':
+                        if role != '':
+                            uu_id = str(uuid.uuid4().hex[:8])
+                            user_name = f_name+' '+l_name
+                            user = User.objects.create(uuid=uu_id, username=user_name, first_name=f_name, last_name=l_name, email=email, role=role, phone=phone, height=height, weight=weight, graduation=graduation_year, seasonofaccess=seasons, biography=biography, positions=position, tags=tags, coverpic=coverpic, transcript=transcripts, document=document) 
+                            user.save()
+                            if user is not None:
+                                send_invite_mail(email, user)
+                                active_team = ActiveTeam.objects.get(user=request.user)
+                                invite_team = InviteTeam.objects.create(invite_by=request.user, invite_to=user, team=active_team.active_team)
+                                invite_team.save()
+                                team_member = TeamMember.objects.create(user=request.user, teamname=active_team.active_team, member=user)
+                                team_member.save()
+                                return render(request, 'invite.html')
+                            else:
+                                messages.error(request, 'ERROR: Try again...Invite not sent...')
+                        else:
+                            messages.error(request, "ERROR: Please Select Role...")
+                    else:
+                        messages.error(request, "ERROR: Please Enter Phone-Number...")
+                else:
+                    messages.error(request, "ERROR: Please Enter Email...")
+            else:
+                messages.error(request, "ERROR: Please Enter Last-name...")
+        else:
+            messages.error(request, "ERROR: Please Enter First-name...")
+        return render(request, 'invite.html')
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -325,6 +339,10 @@ class ManageTeamView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'manageteam.html')
     
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'home.html')
+
 
 def log_out(request):
         logout(request)
