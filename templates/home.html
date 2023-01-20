@@ -22,7 +22,7 @@
                 <div class="flex text-black justify-end">
                     <!-- <input type="text" name="today" class="p-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white" 
                         placeholder="today"> -->
-                        <select name="drop_down" id="drop_down">
+                        <select class="p-4 mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white" name="drop_down" id="drop_down" >
                             <option value="" selected>today</option>
                             <option value="">yesterday</option>
                             <option value="">previousday</option>
@@ -31,20 +31,31 @@
             </div><br>
             <div class="w-full grid grid-cols-7">
                 <div>
-                    <label class="text-gray-400 my-2">Week</label><hr><br>
-                    <label class="text-gray-400 my-2">6 Feb - 12 Feb</label><hr>
+                    <div class="text-gray-400 my-2 mb-8">Week</div><hr>
+                    <div class="text-gray-400 mt-8 mb-6 ">6 Feb - 12 Feb</div><br><hr><br>
                 </div>
                 <div>
-                    <label class="text-gray-400 my-2">Plans</label><hr>
+                    <div class="text-gray-400 my-2 mb-8">Plans</div><hr>
+                    <div class="bg-emerald-300 box-border h-10 w-10 p-2 mt-8 mb-8 rounded-md text-black text-center">8</div><hr><br>
                 </div>
                 <div>
-                    <label class="text-gray-400 my-2">Scripts</label><hr>
+                    <div class="text-gray-400 my-2 mb-8">Scripts</div><hr>
+                    <div class="bg-violet-300 box-border h-10 w-10 p-2 mt-8 mb-8 rounded-md text-black text-center">24</div><hr><br>
                 </div>
                 <div>
-                    <label class="text-gray-400 my-2">Time</label><hr>
+                    <div class="text-gray-400 my-2 mb-8">Time</div><hr>
+                    <div class="bg-cyan-300 box-border h-10 w-10 p-2 mt-8 mb-8 rounded-md text-black text-center">48</div><hr><br>
                 </div>
                 <div>
-                    <label class="text-gray-400 my-2">Views</label><hr>
+                    <div class="text-gray-400 my-2 mb-8">Views</div><hr>
+                    <div class="bg-amber-300 box-border h-10 w-10 p-2 mt-8 mb-8 rounded-md text-black text-center">16</div><hr><br>
+                </div>
+                <div class="bg-sky-900 box-border h-60 w-100 p-2 mx-6 rounded-md text-black text-center col-span-2">
+                    <div class="w-full pl-4 grid grid-cols-6">
+                        <div class="bg-amber-300 text-2xl box-border h-15 w-15 p-3 mt-8 mb-8 rounded-full text-red text-center">11</div>
+                        <div class="mt-8 mb-8 p-3 text-2xl col-span-2">February</div>
+                        <!-- <div class="text-right pr-10 text-white">Periods</div> -->
+                    </div>
                 </div>
             </div>
         </div>

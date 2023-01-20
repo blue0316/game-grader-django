@@ -269,6 +269,20 @@ class DashboardView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class AddgameView(View):
+    def get(self, request, *args, **kwargs):
+        if ActiveTeam.objects.filter(user=request.user):
+            team_members=[]
+            active_team = ActiveTeam.objects.get(user=request.user)
+            team_member = TeamMember.objects.filter(user=request.user, teamname=active_team.active_team)
+            for member in team_member:
+                team_members.append(member.member)
+            context = {
+                'team_member':team_members
+            }
+            return render(request, 'dashboard.html', {'context':context})
+        else:
+            return render(request, 'dashboard.html')
+            
     def post(self, request, *args, **kwargs):
         # print("-->",request.POST['title'])
         # print("-->",request.POST['event'])
