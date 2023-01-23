@@ -26,11 +26,11 @@
             </form>
             
         </div>
-        <div class="flex justify-center items-center">
+        {% comment %} <div class="flex justify-center items-center">
             <!-- Button trigger modal for add game-->
             <!-- <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4" onclick="toggleModal('modal-id')">
             + Create
-        </button> -->
+            </button> -->
 
             <button type="button" id="dropdown-create-btn" data-dropdown-toggle="dropdown-create"
                 class="bg-blue-500 hover:bg-blue-600 text-white font-bold w-24 h-10 rounded">
@@ -445,6 +445,15 @@
                     </li>
                 </ul>
             </div>
+        </div> {% endcomment %}
+
+        <div class="flex justify-center items-center">
+            <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white w-24 h-10 rounded mr-4">
+                Sign in
+            </button>
+            <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white w-24 h-10 rounded">
+                Sign up
+            </button>
         </div>
     </div>
 </nav>
