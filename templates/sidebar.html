@@ -1,8 +1,5 @@
 {% block sidebar %}
-<aside class="flex-shrink-0 w-72 flex flex-col transition-all duration-300 sticky top-0	"
-:class="{ '-ml-64': !sidebarOpen }">
-
-<nav class="flex-1 flex-col bg-slate-800 grid grid-cols-1 gap-4 content-between">
+<aside class="w-72 overflow-y-auto content-between grid grid-cols-1 bg-slate-800">
     <div>
         <a href="#" class="p-2 flex items-center">
             <div class="text-white text-8xl">G</div>
@@ -82,6 +79,5 @@
             </p>
         </a>
     </div>
-</nav>
 </aside>
 {% endblock sidebar %}

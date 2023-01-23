@@ -18,3 +18,8 @@ $(document).ready(function () {
     });
     
 });
+function toggleSidebar() {
+    const aside = document.querySelector('aside')
+    aside.classList.toggle("sm:hidden")
+    aside.classList.toggle("hidden")
+}
