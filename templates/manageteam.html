@@ -4,8 +4,8 @@
 {% endblock staticcss %}
 {% block content %}
 <div class="w-full">
-<!-- <div class="flex column gap-4 w-full"> -->
-    <div  class="text-white text-4xl">Team Management</div>
+    <!-- <div class="flex column gap-4 w-full"> -->
+    <div class="text-white text-4xl">Team Management</div>
     <div class="mt-4 bg-gray-600 p-8 rounded">
         <div class="flex">
             <div class="w-4 h-8 rounded bg-green-500"></div>
@@ -13,7 +13,8 @@
         </div>
         <div class="grid grid-cols-3 gap-8 mt-8">
             <div class="rounded-lg bg-gray-500 p-8">
-                <div class="flex justify-center items-center bg-white text-gray-300 w-20 h-20 rounded-full"><i class="fa fa-user-shield text-gray-500 text-2xl"></i></div>
+                <div class="flex justify-center items-center bg-white text-gray-300 w-20 h-20 rounded-full"><i
+                        class="fa fa-user-shield text-gray-500 text-2xl"></i></div>
                 <div class="mt-3">
                     <span class="text-white">Admin <i class="fa fa-circle-info"></i></span>
                 </div>
@@ -21,12 +22,13 @@
                 <div class="bg-slate-700 flex items-center mt-1 p-1 rounded w-44">
                     <i class="fa fa-arrow-up text-green-500"></i>
                     <span class="text-green-500 ml-2">37.8%</span>
-                    
+
                     <span class="text-gray-400 ml-2">this week</span>
                 </div>
             </div>
             <div class="rounded-lg bg-gray-500 p-8">
-                <div class="flex justify-center items-center bg-white text-gray-300 w-20 h-20 rounded-full"><i class="fa fa-clipboard-list text-gray-500 text-2xl"></i></div>
+                <div class="flex justify-center items-center bg-white text-gray-300 w-20 h-20 rounded-full"><i
+                        class="fa fa-clipboard-list text-gray-500 text-2xl"></i></div>
                 <div class="mt-3">
                     <span class="text-white">Staff <i class="fa fa-circle-info"></i></span>
                 </div>
@@ -34,12 +36,13 @@
                 <div class="bg-slate-700 flex items-center mt-1 p-1 rounded w-44">
                     <i class="fa fa-arrow-down text-red-500"></i>
                     <span class="text-red-500 ml-2">37.8%</span>
-                    
+
                     <span class="text-gray-400 ml-2">this week</span>
                 </div>
             </div>
             <div class="rounded-lg bg-gray-500 p-8">
-                <div class="flex justify-center items-center bg-white text-gray-300 w-20 h-20 rounded-full"><i class="fa fa-user-group text-gray-500 text-2xl"></i></div>
+                <div class="flex justify-center items-center bg-white text-gray-300 w-20 h-20 rounded-full"><i
+                        class="fa fa-user-group text-gray-500 text-2xl"></i></div>
                 <div class="mt-3">
                     <span class="text-white">Athletes <i class="fa fa-circle-info"></i></span>
                 </div>
@@ -47,15 +50,251 @@
                 <div class="bg-slate-700 flex items-center mt-1 p-1 rounded w-44">
                     <i class="fa fa-arrow-up text-green-500"></i>
                     <span class="text-green-500 ml-2">37.8%</span>
-                    
+
                     <span class="text-gray-400 ml-2">this week</span>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <div></div>
-        <div></div>
+    <div class="mt-4">
+        <div class="bg-gray-600 items-center grid grid-cols-12 p-8">
+            <div class="flex justify-start">
+                <div class="bg-green-500 w-4 h-8 rounded"></div>
+            </div>
+            <div class="ml-4 text-white col-span-3">
+                <div class="flex items-center h-full text-2xl">
+                    Products
+                </div>
+            </div>
+            <div class="col-span-4">
+                <form>
+                    <label for="default-search"
+                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input type="search" id="default-search"
+                            class="block bg-gray-700 w-full p-4 pl-10 text-sm text-white border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Search Plans..." required>
+                        <button type="submit"
+                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-span-2">
+                <button
+                    class=" float-right bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 border border-gray-500 rounded text-right">
+                    Plans
+                </button>
+            </div>
+            <div>
+                <button
+                    class=" float-right bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 border border-gray-500 rounded text-right">
+                    Scripts
+                </button>
+            </div>
+            <div class="text-center">
+                <button class="hover:bg-gray-800 h-10 w-10 border border-gray-500 float-center rounded"><i
+                        class="fa-thin fa fa-filter"></i></button>
+            </div>
+        </div>
+        <div class="bg-gray-600 p-4">
+            <!-- <div class="flex items-center mb-4">
+                <input id="default-checkbox" type="checkbox" value=""
+                    class="w-8 h-8 text-gray-600 bg-gray-700 border-gray-800 rounded focus:ring-gray-500 ">
+            </div> -->
+            <table class="table-auto w-full">
+                <thead class="mb-4 border-b border-gray-500">
+                    <tr>
+                        <th class="px-10 py-5 text-gray-400">
+                            <input id="default-checkbox" type="checkbox"
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border-gray-800 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
+                        </th>
+                        <th class="px-10 py-5 text-gray-400">Name</th>
+                        <th class="px-10 py-5 text-gray-400">Status</th>
+                        <th class="px-10 py-5 text-gray-400">Role</th>
+                        <th class="px-10 py-5 text-gray-400">Position(s)</th>
+                        <th class="px-10 py-5 text-gray-400">Viwes</th>
+                        <th class="px-10 py-5 text-gray-400">Likes</th>
+                        <th class="px-10 py-5 text-gray-400">Edit</th>
+                    </tr>
+                </thead>
+                <tbody><br>
+                    <tr class="hover:bg-gray-500">
+                        <td class="px-10 py-5">
+                            <input id="default-checkbox-1" type="checkbox" value=""
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border-gray-800 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
+                        </td>
+                        <!-- <div class="grid grid-rows-3"> -->
+                        <td class=" px-4 py-2">
+                            <div class="flex justify-between">
+                                <div class="h-full rounded relative">
+                                    <img src="{% static 'img/pexels-andrea-piacquadio-3779760.jpg' %}" alt=""
+                                        class="rounded float-right object-cover h-full w-20">
+                                    <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                        <div class="h-4 w-4 bg-green-400"></div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-rows-3 ml-4">
+                                    <div class="text-white text-xl">LastName, FirstName</div>
+                                    <div class="text-gray-400 text-lg">Position(s)</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="max-w-xl text-center bg-green-100 text-green-500 rounded">
+                                <p>Active</p>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2 text-center text-white">Admin</td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="flex flex-wrap w-40 gap-2 justify-center">
+                                <div class="text-white bg-gray-500 rounded w-min px-2">FS</div>
+                                <div class="text-white bg-gray-500 rounded w-min px-2">QB</div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-2">
+                                <div class="text-center bg-gray-900 text-white">48K</div>
+                                <div class="bg-blue-600 ml-2 w-20 h-5 rounded"></div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-2">
+                                <div class="text-center bg-gray-900 text-white">8</div>
+                                <div class="bg-red-600 ml-2 w-20 h-5 rounded"></div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-3 gap-2 justify-between">
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-pencil"></i></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-message"></i></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-ellipsis"></i></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-500">
+                        <td class="px-10 py-5">
+                            <input id="default-checkbox-1" type="checkbox" value=""
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border-gray-800 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
+                        </td>
+                        <!-- <div class="grid grid-rows-3"> -->
+                        <td class=" px-4 py-2">
+                            <div class="flex justify-between">
+                                <div class="h-full rounded relative">
+                                    <img src="{% static 'img/pexels-andrea-piacquadio-3779760.jpg' %}" alt=""
+                                        class="rounded float-right object-cover h-full w-20">
+                                    <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                        <div class="h-4 w-4 bg-green-400"></div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-rows-3 ml-4">
+                                    <div class="text-white text-xl">LastName, FirstName</div>
+                                    <div class="text-gray-400 text-lg">Position(s)</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="max-w-xl text-center bg-red-100 text-red-500 rounded">
+                                <p>Unactive</p>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2 text-center text-white">Staff</td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="flex flex-wrap w-40 gap-2 justify-center">
+                                <div class="text-white bg-gray-500 rounded w-min px-2">FS</div>
+                                <div class="text-white bg-gray-500 rounded w-min px-2">QB</div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-2">
+                                <div class="text-center bg-gray-900 text-white">48K</div>
+                                <div class="bg-blue-600 ml-2 w-20 h-5 rounded"></div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-2">
+                                <div class="text-center bg-gray-900 text-white">8</div>
+                                <div class="bg-red-600 ml-2 w-20 h-5 rounded"></div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-3 gap-2 justify-between">
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-pencil"></i></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-message"></i></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-ellipsis"></i></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-500">
+                        <td class="px-10 py-5">
+                            <input id="default-checkbox-1" type="checkbox" value=""
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border-gray-800 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
+                        </td>
+                        <!-- <div class="grid grid-rows-3"> -->
+                        <td class=" px-4 py-2">
+                            <div class="flex justify-between">
+                                <div class="h-full rounded relative">
+                                    <img src="{% static 'img/pexels-andrea-piacquadio-3779760.jpg' %}" alt=""
+                                        class="rounded float-right object-cover h-full w-20">
+                                    <div class="pb-2 pr-2 hidden bg-gray-700 absolute left-0 top-0 box-in-out">
+                                        <div class="h-4 w-4 bg-green-400"></div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-rows-3 ml-4">
+                                    <div class="text-white text-xl">LastName, FirstName</div>
+                                    <div class="text-gray-400 text-lg">Position(s)</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="max-w-xl text-center bg-red-100 text-red-500 rounded">
+                                <p>Unactive</p>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2 text-center text-white">Staff</td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="flex flex-wrap w-40 gap-2 justify-center">
+                                <div class="text-white bg-gray-500 rounded w-min px-2">FS</div>
+                                <div class="text-white bg-gray-500 rounded w-min px-2">QB</div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-2">
+                                <div class="text-center bg-gray-900 text-white">48K</div>
+                                <div class="bg-blue-600 ml-2 w-20 h-5 rounded"></div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-2">
+                                <div class="text-center bg-gray-900 text-white">8</div>
+                                <div class="bg-red-600 ml-2 w-20 h-5 rounded"></div>
+                            </div>
+                        </td>
+                        <td class="ml-2 px-4 py-2">
+                            <div class="grid grid-cols-3 gap-2 justify-between">
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-pencil"></i></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-message"></i></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center text-gray-500"><i class="fa fa-ellipsis"></i></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock content %}
