@@ -351,6 +351,17 @@ class ProfileView(View):
 
 class ManageTeamView(View):
     def get(self, request, *args, **kwargs):
+        members_list=[]
+        if ActiveTeam.objects.filter(user=request.user).exists():
+            active_team = ActiveTeam.objects.get(user=request.user)
+            # teamname=active_team.active_team
+            # team_members = TeamMember.objects.filter(user=request.user, teamname=active_team.active_team)
+            team_members = TeamMember.objects.all()
+            context = {
+                'team_members':team_members,
+            }
+            return render(request, 'manageteam.html', context=context)
+
         return render(request, 'manageteam.html')
     
 class HomeView(View):

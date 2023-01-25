@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, BaseUserManager
-import uuid
+from django.contrib.postgres.fields import ArrayField
 from django.utils.translation import gettext as _
 
 
@@ -38,7 +38,8 @@ class User(AbstractUser):
     graduation = models.IntegerField(null=True, blank=True)
     seasonofaccess = models.CharField(max_length=500,null=True, blank=True)
     biography = models.CharField(max_length=500, null=True, blank=True)
-    positions = models.CharField(max_length=500, null=True, blank=True)
+    # positions = models.CharField(max_length=500, null=True, blank=True)
+    positions = ArrayField(models.CharField(max_length=200,null=True, blank=True),null=True, blank=True)
     tags = models.CharField(max_length=500, null=True, blank=True)
     coverpic = models.ImageField(upload_to='cover_pic', null=True, blank=True)
     transcript = models.FileField(upload_to='transcript_pic', null=True, blank=True)
@@ -91,8 +92,8 @@ class TeamMember(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return "%s"%(self.member)
+    # def __str__(self):
+    #     return "%s"%(self.member)
 
 class NewGame(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
