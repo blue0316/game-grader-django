@@ -358,9 +358,14 @@ class HomeView(View):
         return render(request, 'home.html')
 
 
-class PlannerView(View):
+class NewPlanView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'planner.html')
+        return render(request, 'new_plan.html')
+
+
+class NewEventView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'new_event.html')
 
 
 def log_out(request):

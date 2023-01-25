@@ -1,5 +1,5 @@
 from django.urls import path, include
-from core.views import SignupView, LoginView, InviteTeamView, DashboardView, ProfileView, ManageTeamView, AddgameView, HomeView, PlannerView, log_out
+from core.views import SignupView, LoginView, InviteTeamView, DashboardView, ProfileView, ManageTeamView, AddgameView, HomeView, NewPlanView, NewEventView, log_out
 
 urlpatterns = [
     path('', LoginView.as_view(),),
@@ -11,6 +11,7 @@ urlpatterns = [
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('addgame/', AddgameView.as_view(), name='addgame'),
     path('profile/', ProfileView.as_view(), name='profile'),
-    path('planner/', PlannerView.as_view(), name='planner'),
+    path('newplan/', NewPlanView.as_view(), name='new_plan'),
+    path('newevent/', NewEventView.as_view(), name='new_event'),
     path('logout/', log_out, name='logout'),
 ]
