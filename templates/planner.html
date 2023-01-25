@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block staticcss %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+{% endblock staticcss %}
+
+{% block content %}
+<div class="flex column gap-4 w-full">
+    <div class="w-2/3">
+        <div class="flex justify-center">
+            <form id="myform" class="shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" method='POST'>{% csrf_token %}
+                <div class="bg-gray-600 p-8 rounded">
+                    <div class="m-2 items-center grid grid-cols-12">
+                        <div class="flex justify-start">
+                            <div class="bg-green-300 w-4 h-8 rounded"></div>
+                        </div>
+                        <div class=" text-white col-span-9">
+                            <div class="flex items-center h-full text-2xl">
+                                Name & description
+                            </div>
+                        </div>
+                        <div class="flex text-white justify-end col-span-2">
+                            <button class="text-white bg-gray-800 p-1 border border-gray-500 text-xl rounded"><i
+                                    class="fa-light fa fa-arrow-left"></i> Back</button>
+                            <!-- <button onclick='invite_team()' class="text-white text-2xl" type='submit'>Back</button> -->
+                        </div>
+                    </div>
+                    <div class="mt-5 grid my-2">
+                        <label for="f_name" class="text-white my-2">Plan title</label>
+                        <input type="text" name="f_name"
+                            class="p-4 mt-2 bg-gray-800 border border-blue-500 rounded-md focus:ring-blue-500 text-white"
+                            id="plan_title">
+                    </div>
+                    <div>
+                        <div class="text-white mt-8 my-2">Plan Type</div>
+                        <ul class="flex justify-between">
+                            <li class="relative">
+                                <input class="sr-only peer" type="radio" value="admin" name="plan_type" id="Practice">
+                                <label
+                                    class="flex p-4 w-52 bg-gray-700 focus:bg-gray-500 hover:bg-gray-500 peer-checked:bg-gray-500 rounded-lg justify-center text-white"
+                                    for="admin">Practice Plan</label>
+                            </li>
+                            <li class="relative">
+                                <input class="sr-only peer" type="radio" value="staff" name="plan_type" id="Meeting">
+                                <label
+                                    class="flex p-4 w-52 bg-gray-700 focus:bg-gray-500 hover:bg-gray-500 peer-checked:bg-gray-500 rounded-lg justify-center text-white"
+                                    for="Staff">Meeting Plan</label>
+                            </li>
+                            <li class="relative">
+                                <input class="sr-only peer" type="radio" value="athlete" name="plan_type" id="Workout">
+                                <label
+                                    class="flex p-4 w-52 bg-gray-700 focus:bg-gray-500 hover:bg-gray-500 peer-checked:bg-gray-500 rounded-lg justify-center text-white"
+                                    for="athlete">Workout Plan</label>
+                            </li>
+                        </ul>
+                    </div><br>
+                    <div class="w-1/2">
+                        <div class="m-2 mt-10 items-center grid grid-cols-12 border-b border-gray-500">
+                            <div class="flex mb-6 justify-start col-span-2">
+                                <div class="bg-orange-300 w-4 h-8 rounded "></div>
+                            </div>
+                            <div class=" text-white mb-6  col-span-10">
+                                <div class="flex items-center h-full text-2xl">
+                                    Schedule Practice
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" m-2 mt-10 text-gray-400">
+                            Choose a day and time to schedule your practice plan.
+                        </div>
+                        <div class=" m-2 mt-10 max-w-sm relative" >
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <input datepicker type="text"
+                                    class="bg-gray-800 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    datepicker-format="yyyy-mm-dd" placeholder="Date" datepicker-orientation="bottom right" >
+                            </div>
+                        </div>
+                        <div class=" m-2 mt-10">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                      </svg>                                      
+                                </div>
+                                <input
+                                    class="timepicker mb-40 bg-gray-800 border border-gray-30 text-sm rounded-lg text-white focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-600 p-8 mt-5 rounded">
+                    <div class="m-2 mb-4 items-center grid grid-cols-12 border-b border-gray-500">
+                        <div class="flex mb-4 justify-start">
+                            <div class="bg-green-300 w-4 h-8 rounded"></div>
+                        </div>
+                        <div class=" text-white mb-4 col-span-9">
+                            <div class="flex items-center h-full text-2xl">
+                                Timers and Notifications
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-10">
+                        <div class=" m-2 mt-10 text-white col-span-9">
+                            Do you want to active timers and notifications for this plan?
+                        </div>
+                        <div class="m-2 mt-10">
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer" checked>
+                                <div
+                                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                </div>
+                                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-gray-600 p-8 mt-5 rounded">
+                        <div>
+                            <div class="grid grid-cols-10">
+                                <div
+                                    class="bg-white text-2xl ml-4 box-border h-14 w-14 p-3 mt-6 rounded-full text-red-700 text-center">
+                                    1
+                                </div>
+                                <div class="mt-6 p-3 text-2xl text-left  text-white col-span-2">Period</div>
+                            </div>
+                            <div class="w-full mb-6 grid grid-cols-3 gap-10 border-b border-gray-500">
+                                <div class="grid my-2 col-span-2">
+                                    <label for="Name" class="text-white ml-4 my-2">Name</label>
+                                    <input type="text" name="Name"
+                                        class="p-4 mt-2 ml-4 mb-6 border-blue-500 bg-gray-700 border rounded-md focus:ring-blue-500 text-white"
+                                        id="Name">
+                                </div>
+                                <div class="grid my-2">
+                                    <label for="Duration" class="text-white my-2">Duration(minutes)</label>
+                                    <input type="text" name="Duration"
+                                        class="p-4 mt-2 mb-6 border-blue-500 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="grid grid-cols-10">
+                                <div
+                                    class="bg-white text-2xl ml-4 box-border h-14 w-14 p-3 mt-6 rounded-full text-red-700 text-center">
+                                    2
+                                </div>
+                                <div class="mt-6 p-3 text-2xl text-left  text-white col-span-2">Period</div>
+                            </div>
+                            <div class="w-full mb-6 grid grid-cols-3 gap-10 border-b border-gray-500">
+                                <div class="grid my-2 col-span-2">
+                                    <label for="Name" class="text-white ml-4 my-2">Name</label>
+                                    <input type="text" name="Name"
+                                        class="p-4 mt-2 ml-4 mb-6 border-blue-500 bg-gray-700 border rounded-md focus:ring-blue-500 text-white"
+                                        id="Name">
+                                </div>
+                                <div class="grid my-2">
+                                    <label for="Duration" class="text-white my-2">Duration(minutes)</label>
+                                    <input type="text" name="Duration"
+                                        class="p-4 mt-2 mb-6 border-blue-500 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="grid grid-cols-10">
+                                <div
+                                    class="bg-white text-2xl ml-4 box-border h-14 w-14 p-3 mt-6 rounded-full text-red-700 text-center">
+                                    3
+                                </div>
+                                <div class="mt-6 p-3 text-2xl text-left  text-white col-span-2">Period</div>
+                            </div>
+                            <div class="w-full mb-6 grid grid-cols-3 gap-10 border-b border-gray-500">
+                                <div class="grid my-2 col-span-2">
+                                    <label for="Name" class="text-white ml-4 my-2">Name</label>
+                                    <input type="text" name="Name"
+                                        class="p-4 mt-2 ml-4 mb-6 border-blue-500 bg-gray-700 border rounded-md focus:ring-blue-500 text-white"
+                                        id="Name">
+                                </div>
+                                <div class="grid my-2">
+                                    <label for="Duration" class="text-white my-2">Duration(minutes)</label>
+                                    <input type="text" name="Duration"
+                                        class="p-4 mt-2 mb-6 border-blue-500 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <button class=" items-center text-white text-2xl bg-blue-600 hover:bg-blue-700 font-bold py-2 px-4 rounded-lg" type='submit'>Add another period</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-right float-right">
+                    <button class="p-2 mt-2 text-white bg-gray-800 hover:bg-gray-900 rounded-lg" type='submit'>Save Draft</button>
+                    <button class="ml-2 p-2 mt-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg" type='submit'>Publish now</button>
+                    <button class="ml-2 p-2 mt-2 w-10 h-10 items-center bg-gray-800 hover:bg-gray-900 rounded-lg" ><i class="fa-solid fa fa-ellipsis-vertical"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block staticjs %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script src="{% static 'js/planner.js' %}"></script>
+{% endblock staticjs %}
