@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+{% load static %}
+{% block staticcss %}
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
+{% endblock staticcss %}
+{% block content %}
+    <div class="p-10 w-full">
+        <div class="flex justify-between">
+            <div class="flex">
+                <div class="p-2 text-5xl text-white">Monday Corrections</div>
+                <div class="p-2 mt-5 text-lg text-gray-400">Practice Plan</div>
+            </div>
+            <!-- <button class="text-white bg-green-400 rounded ">Start</button> -->
+            <div class="">
+                <button class="bg-green-400 text-lg text-white font-bold py-3 px-6 rounded-lg ">
+                <i class="fa-solid fa-plane-up mt-2 mr-2"></i>Start
+                </button>
+            </div>
+        </div>
+        <div class="bg-slate-800 mt-8 p-3 rounded-lg grid grid-rows-1 grid-flow-col gap-4">
+            <div class="row-start-1 m-6">
+                <div class="flex"> 
+                    <div class="flex justify-start p-2">
+                        <div class="bg-blue-600 w-4 h-8 rounded"></div>
+                    </div>
+                    <div class="p-2 text-2xl text-white">
+                       Today's Schedule
+                    </div>
+                </div>
+                <div class="flex text-xl justify-between text-gray-400 border-b-2 border-gray-700">
+                    <span class="p-4">Periods</span>
+                    <span class="p-4">Scripts</span>
+                    <span class="p-4">Comments</span>
+                    <span class="p-4">Views</span>
+                </div>
+                <div class="flex justify-between border-b-2 border-gray-700">
+                    <div class="m-4 bg-green-200 p-4 rounded">80</div>
+                    <div class="m-4 bg-indigo-300 p-4 rounded">10</div>
+                    <div class="m-4 bg-blue-400 p-4 rounded">10</div>
+                    <div class="m-4 bg-yellow-200 p-4 rounded">10</div>
+                </div>
+            </div>
+            <div class="row-start-1 bg-gray-700 rounded-lg m-6 p-5 pl-9 text-center">
+                <div class="flex mt-2">
+                    <div>
+                        <span class=""><i class="fa-solid fa-arrow-right-to-bracket fa-2x p-2 bg-slate-800 text-gray-400 rounded-full"></i></span>
+                    </div>
+                    <div class="pl-5">
+                        <span class="text-white text-4xl ">2:00 pm</span>
+                        <p class="text-white">Start Time</p>
+                    </div>
+                </div>
+                <div class="flex mt-5">
+                    <div>
+                        <i class="fa-solid fa-arrow-right-from-bracket fa-2x p-2  bg-slate-800 text-gray-400 rounded-full"></i>
+                    </div>
+                    <div class="pl-5">
+                        <span class="text-white text-4xl ">3:02 pm</span>
+                        <p class="text-white">End Time</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row-start-1 bg-gray-700 rounded-lg m-6">
+               <div class="flex justify-around mt-6 ">
+                    <div class="mt-2">
+                        <span class="rounded-full bg-white text-orange-700 text-2xl p-4 mr-4">11</span>
+                        <span class="text-white text-3xl">February</span>
+                    </div>
+                    <div class="">
+                        <span class="text-white ">Periods</span><br>
+                        <span class="text-white text-5xl text-center pl-3">8</span>
+                    </div>
+               </div>
+               <div class="m-6 pl-12">
+                <span class="text-white ">Duration</span><br>
+                <span class="text-white text-5xl">1 hr 2 min</span>
+               </div>
+            </div>
+        </div>
+        <div class="bg-slate-800 rounded-lg mt-8 p-2">
+            <div class="flex m-6 border-b-2 border-gray-700 p-2"> 
+                <div class="flex justify-start p-2">
+                    <div class="bg-blue-600 w-4 h-8 rounded"></div>
+                </div>
+                <div class="p-2 text-2xl text-white">
+                    Timer's And Notifications
+                </div>
+            </div>
+            <div class="text-white text-xl grid grid-rows-1 grid-flow-col gap-4 justify-between">
+                <div class="flex m-3 p-3">
+                    <div>
+                        <i class="fa-solid fa-volume-high fa-xl"></i>
+                    </div>
+                    <div class="mx-5">
+                        Activate Timer and Notifications for this plan?
+                    </div>
+                    <div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full  after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                          </label>
+                    </div>
+                </div>
+                <div class="flex m-3 p-3">
+                    <div>
+                        <i class="fa-solid fa-plane-departure fa-xl"></i>
+                    </div>
+                    <div class="mx-5">
+                        Travel Time
+                    </div>
+                    <div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                            <!-- <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span> -->
+                          </label>
+                    </div>
+                </div>
+                <div class="flex m-3 p-3 pl-0">
+                    <div>
+                        <i class="fa-regular fa-clock fa-xl"></i>
+                    </div>
+                    <div class="mx-5">
+                        Start clock automatically at Start Time
+                    </div>
+                    <div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                          </label>
+                    </div>
+                </div>
+            </div>  
+        </div>
+      
+        <div class="grid grid-cols-3 gap-4 text-slate-400 m-5 pt-4  border-b-2 border-slate-900 text-xl">
+            <div class="... text-center">
+                <span class="">
+                    Period Name
+                </span>
+            </div>
+            <div class="... flex justify-around">
+                <div class="">
+                    <span class="">
+                        Start Time
+                    </span>
+                </div>
+                <div class=" ">
+                    <span class="">
+                        Duration
+                    </span>
+                </div>
+            </div>
+            <div class="... row-end-4 ..."></div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl"> 1</div>
+                <div class="pt-5">
+                    <span>
+                        Warm Up
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:00 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        18 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">2</div>
+                <div class="pt-5">
+                    <span>
+                        Team Stretch
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:08 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        05 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">3</div>
+                <div class="pt-5">
+                    <span>
+                        Two minute Drill
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:14 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        10 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">4</div>
+                <div class="pt-5">
+                    <span>
+                        Individual Drills
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:24 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        05 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5 ">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">5</div>
+                <div class="pt-5">
+                    <span>
+                        Group Pass,Inside Run
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:30 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        07 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">6</div>
+                <div class="pt-5">
+                    <span>
+                        7 on 7,1 on 1
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:37 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        12 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">7</div>
+                <div class="pt-5">
+                    <span>
+                        Hydration Break
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:50 pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        04 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div><div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">8</div>
+                <div class="pt-5">
+                    <span>
+                        Team-RedZone
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around ">
+                <div class="pt-5">
+                    <span class="">
+                        2:54pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                    <span class=" bg-slate-400 p-2">
+                        08 min
+                    </span>
+                </div>
+            </div>
+            <div class="... flex justify-around pt-5">
+                <i class="fa-solid fa-list text-gray-400"></i>
+                <i class="fa-regular fa-file-lines text-gray-400"></i>
+            
+                <i class="fa-regular fa-message text-gray-400"></i>
+            
+                <i class="fa-solid fa-pen text-gray-400"></i>
+        
+                <i class="fa-solid fa-ellipsis text-gray-400"></i>
+            </div>
+        </div><div class="grid grid-cols-3 gap-4 text-white text-xl border-b-2 m-5 pb-4  border-slate-900">
+            <div class="... flex pl-5">
+                <div  class="pt-5">
+                    <span>
+                        <i class="fa-solid fa-bars text-gray-400"></i>
+                    </span>
+                </div>
+                <div class="mx-5 rounded-full h-16 w-16 flex items-center justify-center bg-slate-400 text-2xl">END</div>
+                <div class="pt-5">
+                    <span>
+                        Anticiopated end of Practice
+                    </span>
+                </div>
+            </div>
+            <div class="... flex ">
+                <div class="pt-5">
+                    <span class="">
+                       02:02pm
+                    </span>
+                </div>
+                <div class="pt-5">
+                 
+                </div>
+            </div>
+            
+        </div>
+
+       
+
+        
+   
+{% endblock content %}

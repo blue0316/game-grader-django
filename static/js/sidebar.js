@@ -4,14 +4,15 @@
 //   });
 // });
 $(document).ready(function () {
-    $("nav div a").click(function () {
-        $("nav div .side-nav-group").removeClass("active");
+    $("aside div a").click(function () {
+        $("aside div .side-nav-group").removeClass("active");
         $(this).addClass("active");
+        console.log("hello");
     });
 
     var current_path = window.location
-    $("nav div .side-nav-group").removeClass("active");
-    $.each($("nav .side-nav-group"), function( key, value ) {
+    $("aside div .side-nav-group").removeClass("active");
+    $.each($("aside .side-nav-group"), function( key, value ) {
         if (window.location.href == value){
             $(this).addClass("active");
         }
