@@ -15,7 +15,7 @@
 <div class="flex column gap-4 w-full">
     <div class="w-2/3">
         <div class="flex justify-center">
-            <form class="shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" method='POST'>{% csrf_token %}
+            <form id="myform" class="shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" method='POST'>{% csrf_token %}
                 <!-- Name & description -->
                 <br>
                 {% if messages %}
@@ -37,7 +37,8 @@
                             </div>
                         </div>
                         <div class="flex text-white justify-end">
-                            <button onclick='invite_team()' class="text-white text-2xl" type='submit'>Back</button>
+                            <button class="text-white text-2xl">Back</button>
+                            <!-- <button onclick='invite_team()' class="text-white text-2xl" type='submit'>Back</button> -->
                         </div>
                     </div>
                     <div class="w-full grid grid-cols-2 gap-10">
@@ -88,22 +89,22 @@
                         </ul>
                     </div>
                     <div>
-                        <div class="w-full grid grid-cols-3 gap-10 relative">
+                        <div class="w-full grid grid-cols-3 gap-10">
                             <div class="grid my-2">
                                 <label for="height" class="text-white my-2">Height</label>
-                                <input type="text" name="height"
-                                    class="p-4 mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                <input type="text"  name="height"
+                                    class="p-4 w-full mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
                             </div>
                             <div class="grid my-2">
                                 <label for="weight" class="text-white my-2">Weight</label>
                                 <input type="text" name="weight"
-                                    class="p-4 mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                    class="p-4 w-full mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
                             </div>
-                            <div class="grid my-2 absolute top-0 right-0">
+                            <div class="grid my-2  top-0 right-0">
                                 <label for="graduation_year" class="text-white my-2">Graduation Year</label>
 
                                 <input type="text" name="graduation_year"
-                                    class="p-4 mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
+                                    class="p-4 w-full mt-2 bg-gray-700 border rounded-md focus:ring-blue-500 text-white">
                             </div>
                         </div>
                     </div>
@@ -286,6 +287,7 @@
                         <input type="file" name='drop-img' accept="image/png, application/pdf" />
                     </div>
                 </div>
+                <button class="mt-4 float-right text-white text-2xl bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded" type='submit'>Publish now</button>
             </form>
         </div>
     </div>

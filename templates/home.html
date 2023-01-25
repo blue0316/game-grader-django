@@ -144,12 +144,18 @@
                 <input id="default-checkbox" type="checkbox" value=""
                     class="w-8 h-8 text-gray-600 bg-gray-700 border-gray-800 rounded focus:ring-gray-500 ">
             </div> -->
-            <table class="table-auto">
+            <table class="table-auto w-full">
                 <thead class="mb-4 border-b border-gray-500">
                     <tr>
-                        <th class="px-10 py-5 text-gray-400"><input id="default-checkbox" type="checkbox" value=""
-                                class="w-8 h-8 bg-black accent-slate-100 appearance-none checked:bg-blue-600 checked:appearance-auto">
+                        <th class="px-10 py-5 text-gray-400"><input id="default-checkbox" type="checkbox"
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border border-gray-500 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
                         </th>
+                        <!-- <th class="px-10 py-5 text-gray-400"><label class="main w-8 h-8 items-center">
+                            <input type="checkbox" name="check_all" value="">
+                            <span class="w3docs"></span>
+                          </label></th> -->
                         <th class="px-10 py-5 text-gray-400">Product</th>
                         <th class="px-10 py-5 text-gray-400">Status</th>
                         <th class="px-10 py-5 text-gray-400">Price</th>
@@ -161,8 +167,10 @@
                 <tbody><br>
                     <tr>
                         <td class="px-10 py-5">
-                            <input id="default-checkbox" type="checkbox" value=""
-                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border-gray-800 rounded focus:ring-gray-500 ">
+                            <input id="default-checkbox" type="checkbox"
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border border-gray-500 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
                         </td>
                         <!-- <div class="grid grid-rows-3"> -->
                         <td class=" px-4 py-2">
@@ -210,8 +218,10 @@
                     </tr>
                     <tr>
                         <td class="px-10 py-5">
-                            <input id="default-checkbox" type="checkbox" value=""
-                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border-gray-800 rounded focus:ring-gray-500 ">
+                            <input id="default-checkbox" type="checkbox"
+                                class="w-8 h-8 text-gray-600 float-right bg-gray-700 border border-gray-500 rounded"
+                                x-data="{ open: false }" @click="open = !open"
+                                :class="{'' : open, 'appearance-none' : !open}">
                         </td>
                         <!-- <div class="grid grid-rows-3"> -->
                         <td class=" px-4 py-2">

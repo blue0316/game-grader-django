@@ -358,6 +358,11 @@ class HomeView(View):
         return render(request, 'home.html')
 
 
+class PlannerView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'planner.html')
+
+
 def log_out(request):
         logout(request)
         return redirect('login')
