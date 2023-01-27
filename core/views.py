@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView
 from django.views import View
-from core.models import User, TeamDetail, InviteTeam, TeamMember, ActiveTeam, NewGame
+from core.models import User, TeamDetail, InviteTeam, TeamMember, ActiveTeam, NewGame, Period, NewPlan
 from core.forms import UserRegistrationForm, UserLoginForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -213,7 +213,11 @@ class InviteTeamView(View):
         tags = request.POST['groupsortags']
         coverpic = request.POST['cover-pic']
         transcripts = request.POST['Transcripts']
-        document = request.POST['drop-img']
+        document = request.POST['drop-imgc']
+        # coverpic = request.FILES.get('cover-pic')
+        # transcripts = request.FILES.get('Transcripts')
+        # document = request.FILES.get('drop-imgc')
+
 
         if f_name != '':
             if l_name != '':
@@ -376,6 +380,25 @@ class NewPlanView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'new_plan.html')
 
+    def post(self, request, *args, **kwargs):
+        title = request.POST['plan_title']
+        ptype = request.POST['plan_type']
+        schedule_date = request.POST['schedule_date']
+        schedule_time = request.POST['schedule_time']
+        notification = request.POST['notifications']
+        name = request.POST.getlist('Name[]')
+        durations = request.POST.getlist('Duration[]')
+
+        newplan = NewPlan.objects.create(user=request.user, planname=title, plantype=ptype, scheduledate=schedule_date, scheduletime=schedule_time.split(" ")[0], notification=notification)
+        
+        for i in range(len(durations)):
+            priod = Period(periodname=name[i], duration=int(durations[i]))
+            priod.save()
+            newplan.period.add(priod)
+            newplan.save()
+
+        return render(request, 'new_plan.html')
+
 
 class NewEventView(View):
     def get(self, request, *args, **kwargs):
@@ -385,3 +408,7 @@ class NewEventView(View):
 def log_out(request):
         logout(request)
         return redirect('login')
+
+
+# aa = NewPlan.objects.get(id=11)
+# print("\n\n",aa.periods.all(),"\n\n")

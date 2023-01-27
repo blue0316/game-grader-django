@@ -103,3 +103,25 @@ class NewGame(models.Model):
     sharewith = models.ManyToManyField(User, related_name='sharewith')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+class Period(models.Model):
+    periodname = models.CharField(max_length=100)
+    duration = models.IntegerField()
+class NewPlan(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    planname = models.CharField(max_length=100)
+    plantype = models.CharField(max_length=10)
+    scheduledate = models.DateField()
+    scheduletime = models.TimeField()
+    notification = models.BooleanField()
+    periods = models.ManyToManyField(Period, related_name='p')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+
+
+# for i in NewGame.objects.filter(id=6):
+    
+#     print("----------",i,"----------")
+    # print("----------",NewPlan.objects.filter(id=9).first().id,"----------")
